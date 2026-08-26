@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="露嘎果園｜拉拉山水蜜桃與椴木香菇首頁概念樣板" />
+  <title>露嘎果園｜拉拉山</title>
+  <style>
+    :root{
+      --ink:#28332b;
+      --muted:#6c776f;
+      --green:#607a66;
+      --deep:#32483a;
+      --cream:#f7f3e9;
+      --paper:#fffdf8;
+      --peach:#dfa781;
+      --line:rgba(40,51,43,.14);
+      --shadow:0 20px 55px rgba(31,45,35,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    }
+    a{text-decoration:none;color:inherit}
+    button,a{touch-action:manipulation}
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}
+
+    /* NAV */
+    .nav{
+      position:absolute;z-index:20;left:0;right:0;top:0;
+      height:76px;display:flex;align-items:center;
+      color:#fff;
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.08em}
+    .brand-mark{
+      width:40px;height:40px;border:1px solid rgba(255,255,255,.7);
+      border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.1);backdrop-filter:blur(8px)
+    }
+    .nav-links{display:flex;gap:28px;font-size:14px}
+    .nav-links a{opacity:.92}
+
+    /* HERO */
+    .hero{
+      min-height:680px;position:relative;display:flex;align-items:flex-end;overflow:hidden;
+      background:
+        radial-gradient(circle at 68% 30%,rgba(255,221,172,.24),transparent 22%),
+        linear-gradient(180deg,#77907e 0%,#506d5a 38%,#294234 100%);
+    }
+    .mountain-scene{position:absolute;inset:0;overflow:hidden}
+    .sun{position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,236,190,.3);right:10%;top:14%;filter:blur(1px)}
+    .ridge{position:absolute;left:-8%;right:-8%;bottom:0;height:66%;clip-path:polygon(0 46%,12% 36%,23% 47%,36% 28%,49% 45%,61% 22%,74% 40%,86% 29%,100% 43%,100% 100%,0 100%)}
+    .ridge.r1{background:#536f5b;opacity:.7;bottom:25%}
+    .ridge.r2{background:#3d5948;opacity:.86;bottom:10%;clip-path:polygon(0 42%,10% 51%,22% 34%,35% 49%,48% 25%,62% 43%,74% 34%,88% 49%,100% 36%,100% 100%,0 100%)}
+    .ridge.r3{background:#274234;bottom:-7%;clip-path:polygon(0 35%,13% 24%,26% 45%,40% 30%,54% 48%,68% 27%,80% 42%,91% 30%,100% 40%,100% 100%,0 100%)}
+    .mist{position:absolute;left:-10%;right:-10%;height:80px;border-radius:50%;background:rgba(255,255,255,.15);filter:blur(22px)}
+    .mist.m1{bottom:34%}.mist.m2{bottom:18%;opacity:.6}
+    .hero:after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(12,24,17,.08),rgba(13,25,18,.08) 35%,rgba(16,29,20,.72) 100%);
+    }
+    .hero-content{
+      position:relative;z-index:3;color:white;padding-bottom:76px;max-width:760px
+    }
+    .eyebrow{font-size:12px;letter-spacing:.22em;font-weight:700;opacity:.84;margin-bottom:14px}
+    h1{font-size:clamp(42px,6.5vw,78px);line-height:1.05;margin:0 0 20px;letter-spacing:-.035em}
+    .hero p{font-size:clamp(16px,2vw,21px);line-height:1.8;margin:0 0 30px;color:rgba(255,255,255,.9)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;padding:0 23px;border-radius:999px;font-weight:800;
+      border:1px solid transparent;transition:.2s ease
+    }
+    .btn-light{background:#fff;color:var(--deep)}
+    .btn-ghost{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(8px)}
+    .btn-dark{background:var(--deep);color:white}
+    .demo-label{
+      position:absolute;z-index:4;right:20px;bottom:18px;color:white;
+      font-size:11px;background:rgba(20,30,23,.66);padding:7px 11px;border-radius:999px
+    }
+
+    /* SECTIONS */
+    section{padding:92px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:38px}
+    .kicker{font-size:12px;letter-spacing:.19em;font-weight:800;color:var(--green);margin-bottom:10px}
+    h2{font-size:clamp(30px,4.2vw,50px);line-height:1.15;letter-spacing:-.03em;margin:0;color:var(--deep)}
+    .section-head p{max-width:500px;color:var(--muted);line-height:1.8;margin:0}
+
+    /* PRODUCTS */
+    .products{background:var(--cream)}
+    .product-grid{display:grid;grid-template-columns:1.3fr .85fr;gap:22px}
+    .product-card{
+      position:relative;min-height:450px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
+      color:white;isolation:isolate
+    }
+    .product-card.peach{
+      background:
+        radial-gradient(circle at 72% 28%,#ffd9bd 0 7%,transparent 8%),
+        radial-gradient(circle at 70% 31%,#f4b28d 0 16%,transparent 17%),
+        radial-gradient(circle at 42% 43%,#f3c0a0 0 13%,transparent 14%),
+        linear-gradient(145deg,#8ca57d,#49644e 66%,#2c4737);
+    }
+    .product-card.mushroom{
+      background:
+        radial-gradient(ellipse at 65% 38%,#b48e69 0 15%,transparent 16%),
+        radial-gradient(ellipse at 38% 54%,#8f6f54 0 13%,transparent 14%),
+        radial-gradient(ellipse at 68% 72%,#755a45 0 10%,transparent 11%),
+        linear-gradient(145deg,#d7c8ae,#7d705e 58%,#403a31);
+    }
+    .product-card:before{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,transparent 25%,rgba(12,18,14,.78) 100%)
+    }
+    .product-art{position:absolute;inset:0;pointer-events:none}
+    .leaf{position:absolute;width:120px;height:48px;background:#678a66;border-radius:100% 0 100% 0;transform:rotate(-22deg);right:9%;top:18%;opacity:.75}
+    .peach-fruit{position:absolute;width:165px;height:150px;border-radius:52% 48% 54% 46%;background:radial-gradient(circle at 34% 27%,#ffe8d8 0 7%,#f8c3a2 30%,#e99073 76%,#c96f61 100%);right:16%;top:21%;box-shadow:inset -18px -20px 30px rgba(141,69,61,.13)}
+    .peach-fruit:after{content:"";position:absolute;width:1px;height:74%;background:rgba(164,90,78,.28);left:52%;top:13%;transform:rotate(7deg)}
+    .mushroom-cap{position:absolute;width:180px;height:95px;border-radius:100% 100% 35% 35%;background:radial-gradient(circle at 38% 35%,#d2b38f,#9a7558 65%,#6b513f);right:12%;top:26%;transform:rotate(-7deg)}
+    .mushroom-stem{position:absolute;width:58px;height:130px;border-radius:24px;background:linear-gradient(90deg,#e8dcc5,#b9a58d);right:25%;top:39%;transform:rotate(5deg)}
+    .product-info{position:absolute;left:0;right:0;bottom:0;padding:30px;z-index:2}
+    .tag{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(0,0,0,.12);font-size:12px;margin-bottom:12px}
+    .product-info h3{font-size:31px;margin:0 0 8px}
+    .product-info p{margin:0 0 18px;color:rgba(255,255,255,.84);line-height:1.65}
+
+    /* STORY */
+    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+    .story-card{
+      min-height:430px;border-radius:30px;position:relative;overflow:hidden;
+      background:linear-gradient(145deg,#dfe8dd,#f1dcc7)
+    }
+    .story-card:before{content:"山";position:absolute;right:-8px;bottom:-34px;font-size:250px;font-weight:900;color:rgba(50,72,58,.08)}
+    .story-quote{
+      position:absolute;left:28px;right:28px;bottom:28px;
+      padding:24px;border-radius:20px;background:rgba(255,255,255,.84);backdrop-filter:blur(10px);
+      color:var(--deep);font-size:18px;line-height:1.75
+    }
+    .story-copy p{color:var(--muted);line-height:1.9}
+    .placeholder{border-left:3px solid var(--peach);padding-left:18px;color:#806654!important}
+
+    /* STEPS */
+    .steps{background:var(--deep);color:white}
+    .steps h2{color:white}.steps .kicker{color:#bfd0c1}.steps .section-head p{color:rgba(255,255,255,.68)}
+    .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .step{padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.05)}
+    .step-no{width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12);font-weight:800;margin-bottom:22px}
+    .step h3{font-size:21px;margin:0 0 8px}.step p{margin:0;color:rgba(255,255,255,.7);line-height:1.7;font-size:14px}
+
+    /* LINE */
+    .line-section{background:#edf2e9}
+    .line-box{
+      display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+      padding:44px;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:0 16px 38px rgba(48,72,55,.08)
+    }
+    .line-box h3{font-size:31px;margin:0 0 10px;color:var(--deep)}
+    .line-box p{margin:0;color:var(--muted);line-height:1.8}
+    .line-btn{background:#477a50;color:white;min-width:170px}
+
+    /* FOOTER */
+    footer{background:#202b23;color:#fff;padding:45px 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+    footer small{display:block;margin-top:12px;color:rgba(255,255,255,.57);line-height:1.8}
+    .footer-links{display:flex;flex-wrap:wrap;gap:16px;color:rgba(255,255,255,.7);font-size:13px}
+
+    @media (hover:hover){
+      .btn:hover{transform:translateY(-1px)}
+      .nav-links a:hover{opacity:.7}
+    }
+
+    @media (max-width:760px){
+      .container{width:min(100% - 32px,1180px)}
+      .nav{height:66px}.nav-links{display:none}.brand{font-size:14px}
+      .hero{min-height:620px}.hero-content{padding-bottom:54px}.hero h1{font-size:43px}.hero p{font-size:16px}
+      .cta{display:grid;grid-template-columns:1fr}.btn{width:100%}
+      section{padding:66px 0}
+      .section-head{display:block}.section-head p{margin-top:16px}
+      .product-grid{grid-template-columns:1fr}.product-card{min-height:390px}
+      .product-info h3{font-size:27px}
+      .story-grid{grid-template-columns:1fr;gap:30px}.story-card{min-height:340px}
+      .step-grid{grid-template-columns:1fr}
+      .line-box{grid-template-columns:1fr;padding:28px}.line-btn{width:100%}
+      .footer-inner{display:block}.footer-links{margin-top:25px}
+      .demo-label{right:12px;bottom:12px}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="mountain-scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="ridge r1"></div><div class="mist m1"></div>
+      <div class="ridge r2"></div><div class="mist m2"></div>
+      <div class="ridge r3"></div>
+    </div>
+
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">
+          <span class="brand-mark">露</span>
+          <span>露嘎果園 · 拉拉山</span>
+        </a>
+        <div class="nav-links">
+          <a href="#story">形象故事</a>
+          <a href="#products">商品訂購</a>
+          <a href="#line">LINE 官方</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">LUGA FARM · LALA MOUNTAIN</div>
+        <h1>山裡種的，<br>慢慢送到你手裡。</h1>
+        <p>拉拉山水蜜桃與椴木香菇。第一年的網站先把產地、訂購與服務做好，讓每一份農產都有清楚的來處。</p>
+        <div class="cta">
+          <a class="btn btn-light" href="#products">商品訂購</a>
+          <a class="btn btn-ghost" href="#story">走進果園</a>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">首頁提案樣板 V1｜正式版換自有照片</div>
+  </header>
+
+  <main>
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">SEASONAL GOODS</div>
+            <h2>從山上，挑當季最好的。</h2>
+          </div>
+          <p>第一年以少量品項、清楚規格、預購制度為核心。介面先簡單，讓客人容易選、容易買、也容易知道何時出貨。</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card peach">
+            <div class="product-art" aria-hidden="true">
+              <div class="leaf"></div><div class="peach-fruit"></div>
+            </div>
+            <div class="product-info">
+              <span class="tag">產季預購 · 主力商品</span>
+              <h3>拉拉山水蜜桃</h3>
+              <p>8 入／10 入／12 入，依成熟度採收、分批出貨。</p>
+              <a class="btn btn-light" href="#">查看預購規格</a>
+            </div>
+          </article>
+
+          <article class="product-card mushroom">
+            <div class="product-art" aria-hidden="true">
+              <div class="mushroom-stem"></div><div class="mushroom-cap"></div>
+            </div>
+            <div class="product-info">
+              <span class="tag">山產乾貨</span>
+              <h3>椴木香菇</h3>
+              <p>自家栽培，讓網站不只在桃季有東西可看、可買。</p>
+              <a class="btn btn-light" href="#">了解香菇</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container story-grid">
+        <div class="story-card">
+          <div class="story-quote">「有些人離開山裡，是為了生活；也有人走了一圈，最後決定回來。」</div>
+        </div>
+
+        <div class="story-copy">
+          <div class="kicker">OUR STORY</div>
+          <h2>回到山上的故事，慢慢寫。</h2>
+          <p>這裡未來會成為品牌最有辨識度的內容：回到拉拉山、重新開始農業生活、一路成為百大青農，以及果園與家人的關係。</p>
+          <p class="placeholder">此區目前先留「鮮明概念」，不急著一次把故事寫滿。正式版等訪談、照片與時間線整理好，再完整製作。</p>
+          <a class="btn btn-dark" href="#top">故事頁概念入口</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">HOW TO ORDER</div>
+            <h2>第一次來，也能很快買懂。</h2>
+          </div>
+          <p>第一年網站最優先完成的，不是炫技，而是讓陌生客人從商品選擇到付款完成都沒有疑問。</p>
+        </div>
+
+        <div class="step-grid">
+          <div class="step">
+            <div class="step-no">01</div>
+            <h3>選擇商品</h3>
+            <p>清楚看見規格、價格、限購數量與預計出貨區間。</p>
+          </div>
+          <div class="step">
+            <div class="step-no">02</div>
+            <h3>線上預購付款</h3>
+            <p>會員資料、配送資訊與金流在一條流程內完成。</p>
+          </div>
+          <div class="step">
+            <div class="step-no">03</div>
+            <h3>成熟後出貨</h3>
+            <p>依果實成熟度安排採收，透過網站與 LINE 持續通知。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="line-section" id="line">
+      <div class="container">
+        <div class="line-box">
+          <div>
+            <div class="kicker">LINE OFFICIAL</div>
+            <h3>買完之後，我們還在。</h3>
+            <p>LINE 官方帳號作為訂單後的互動橋樑：預購提醒、出貨通知、保存方式、售後服務，以及下一季把熟客重新找回來。</p>
+          </div>
+          <a class="btn line-btn" href="#">加入 LINE（示意）</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="brand">
+          <span class="brand-mark">露</span>
+          <span>露嘎果園 · 拉拉山</span>
+        </div>
+        <small>
+          桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>
+          首頁概念樣板 V1 · 非正式上線版本
+        </small>
+      </div>
+      <div class="footer-links">
+        <span>購買須知</span><span>配送說明</span><span>售後服務</span><span>隱私權政策</span><span>聯絡我們</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
