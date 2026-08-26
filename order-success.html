@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂購完成｜露嘎果園</title>
+  <style>
+    :root{
+      --ink:#263129; --muted:#6b776f; --deep:#2f4638; --line:rgba(38,49,41,.13);
+      --paper:#fffdf8; --soft:#f3f6f1; --ok:#5f9b6d;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:linear-gradient(180deg,#f4f7f2,#eef2ed);color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    }
+    .wrap{min-height:100vh;display:grid;place-items:center;padding:28px}
+    .card{
+      width:min(900px,100%);background:#fff;border:1px solid var(--line);border-radius:28px;
+      box-shadow:0 24px 60px rgba(41,59,47,.10);overflow:hidden
+    }
+    .top{
+      padding:36px;background:linear-gradient(145deg,#314738,#44624d);color:#fff;position:relative
+    }
+    .top:after{
+      content:"";position:absolute;right:26px;top:26px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.08)
+    }
+    .status{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px}
+    .status i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#9ce0ab}
+    h1{font-size:40px;line-height:1.1;margin:18px 0 10px}
+    .top p{margin:0;color:rgba(255,255,255,.82);line-height:1.75;max-width:640px}
+    .body{display:grid;grid-template-columns:1.02fr .98fr}
+    .pane{padding:32px}
+    .summary{background:#fff}
+    .summary h2,.next h2{margin:0 0 16px;font-size:24px;color:var(--deep)}
+    .order-box{border:1px dashed rgba(38,49,41,.18);border-radius:18px;background:#fcfdfb;padding:18px}
+    .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;color:var(--muted)}
+    .row strong{color:var(--deep)}
+    .tip-list{display:grid;gap:12px;margin-top:18px}
+    .tip{padding:14px 16px;border-radius:16px;background:#f7faf6;border:1px solid rgba(38,49,41,.08);line-height:1.7;color:var(--muted)}
+    .next{background:var(--soft)}
+    .action{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid rgba(38,49,41,.08);margin-bottom:12px}
+    .action strong{color:var(--deep)}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;
+      border-radius:999px;text-decoration:none;font-weight:800
+    }
+    .btn-dark{background:var(--deep);color:#fff}
+    .btn-light{background:#fff;color:var(--deep);border:1px solid rgba(38,49,41,.12)}
+    @media (max-width:760px){
+      .body{grid-template-columns:1fr}
+      h1{font-size:32px}
+      .pane{padding:24px}
+      .btns{display:grid}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="status"><i></i> 已收到你的訂單與付款資訊</div>
+        <h1>訂購完成，<br>接下來就等桃子下山。</h1>
+        <p>這是一個靜態示意頁，未來可以在正式結帳後顯示：訂單成立、付款成功、出貨區間、LINE 提醒、保存方式與售後入口。</p>
+      </div>
+
+      <div class="body">
+        <div class="pane summary">
+          <h2>訂單摘要</h2>
+          <div class="order-box">
+            <div class="row"><span>訂單編號</span><strong>LG2027-000128</strong></div>
+            <div class="row"><span>商品內容</span><strong>水蜜桃 10 入 × 2</strong></div>
+            <div class="row"><span>付款方式</span><strong>信用卡付款</strong></div>
+            <div class="row"><span>配送地址</span><strong>新竹市（示意）</strong></div>
+            <div class="row"><span>預計出貨</span><strong>6 月上旬～中旬</strong></div>
+          </div>
+
+          <div class="tip-list">
+            <div class="tip">若未來實際採收期因天候調整，網站與 LINE 可同步更新。</div>
+            <div class="tip">收到商品後，若有碰傷、異常或疑問，可由售後入口回報。</div>
+            <div class="tip">可加入 LINE 官方帳號接收出貨提醒與保存建議。</div>
+          </div>
+        </div>
+
+        <div class="pane next">
+          <h2>接下來你可以…</h2>
+          <div class="action"><span>加入 LINE 官方帳號</span><strong>→</strong></div>
+          <div class="action"><span>查看我的訂單</span><strong>→</strong></div>
+          <div class="action"><span>閱讀保存與食用方式</span><strong>→</strong></div>
+          <div class="action"><span>需要協助？前往售後服務</span><strong>→</strong></div>
+
+          <div class="btns">
+            <a class="btn btn-dark" href="index.html">回首頁</a>
+            <a class="btn btn-light" href="#">查看訂單（示意）</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

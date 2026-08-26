@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="露嘎果園｜拉拉山水蜜桃與椴木香菇首頁概念樣板" />
+  <meta name="description" content="露嘎果園｜拉拉山水蜜桃與椴木香菇首頁概念樣板 V2" />
   <title>露嘎果園｜拉拉山</title>
   <style>
     :root{
-      --ink:#28332b;
-      --muted:#6c776f;
-      --green:#607a66;
-      --deep:#32483a;
-      --cream:#f7f3e9;
+      --ink:#263129;
+      --muted:#69756c;
+      --green:#597360;
+      --deep:#2f4638;
+      --cream:#f7f3ea;
       --paper:#fffdf8;
-      --peach:#dfa781;
-      --line:rgba(40,51,43,.14);
+      --peach:#e8a982;
+      --peach-soft:#f5d2bc;
+      --line:rgba(38,49,41,.13);
       --shadow:0 20px 55px rgba(31,45,35,.12);
+      --mush:#8d7159;
+      --mush2:#c4ab8d;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -26,177 +29,279 @@
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
     }
     a{text-decoration:none;color:inherit}
-    button,a{touch-action:manipulation}
     .container{width:min(1180px,calc(100% - 40px));margin:auto}
-
-    /* NAV */
-    .nav{
-      position:absolute;z-index:20;left:0;right:0;top:0;
-      height:76px;display:flex;align-items:center;
-      color:#fff;
-    }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.08em}
-    .brand-mark{
-      width:40px;height:40px;border:1px solid rgba(255,255,255,.7);
-      border-radius:50%;display:grid;place-items:center;
-      background:rgba(255,255,255,.1);backdrop-filter:blur(8px)
-    }
-    .nav-links{display:flex;gap:28px;font-size:14px}
-    .nav-links a{opacity:.92}
-
-    /* HERO */
-    .hero{
-      min-height:680px;position:relative;display:flex;align-items:flex-end;overflow:hidden;
-      background:
-        radial-gradient(circle at 68% 30%,rgba(255,221,172,.24),transparent 22%),
-        linear-gradient(180deg,#77907e 0%,#506d5a 38%,#294234 100%);
-    }
-    .mountain-scene{position:absolute;inset:0;overflow:hidden}
-    .sun{position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,236,190,.3);right:10%;top:14%;filter:blur(1px)}
-    .ridge{position:absolute;left:-8%;right:-8%;bottom:0;height:66%;clip-path:polygon(0 46%,12% 36%,23% 47%,36% 28%,49% 45%,61% 22%,74% 40%,86% 29%,100% 43%,100% 100%,0 100%)}
-    .ridge.r1{background:#536f5b;opacity:.7;bottom:25%}
-    .ridge.r2{background:#3d5948;opacity:.86;bottom:10%;clip-path:polygon(0 42%,10% 51%,22% 34%,35% 49%,48% 25%,62% 43%,74% 34%,88% 49%,100% 36%,100% 100%,0 100%)}
-    .ridge.r3{background:#274234;bottom:-7%;clip-path:polygon(0 35%,13% 24%,26% 45%,40% 30%,54% 48%,68% 27%,80% 42%,91% 30%,100% 40%,100% 100%,0 100%)}
-    .mist{position:absolute;left:-10%;right:-10%;height:80px;border-radius:50%;background:rgba(255,255,255,.15);filter:blur(22px)}
-    .mist.m1{bottom:34%}.mist.m2{bottom:18%;opacity:.6}
-    .hero:after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(12,24,17,.08),rgba(13,25,18,.08) 35%,rgba(16,29,20,.72) 100%);
-    }
-    .hero-content{
-      position:relative;z-index:3;color:white;padding-bottom:76px;max-width:760px
-    }
-    .eyebrow{font-size:12px;letter-spacing:.22em;font-weight:700;opacity:.84;margin-bottom:14px}
-    h1{font-size:clamp(42px,6.5vw,78px);line-height:1.05;margin:0 0 20px;letter-spacing:-.035em}
-    .hero p{font-size:clamp(16px,2vw,21px);line-height:1.8;margin:0 0 30px;color:rgba(255,255,255,.9)}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
-      min-height:50px;padding:0 23px;border-radius:999px;font-weight:800;
+      min-height:48px;padding:0 22px;border-radius:999px;font-weight:800;
       border:1px solid transparent;transition:.2s ease
     }
+    .btn:hover{transform:translateY(-1px)}
     .btn-light{background:#fff;color:var(--deep)}
     .btn-ghost{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(8px)}
     .btn-dark{background:var(--deep);color:white}
-    .demo-label{
-      position:absolute;z-index:4;right:20px;bottom:18px;color:white;
-      font-size:11px;background:rgba(20,30,23,.66);padding:7px 11px;border-radius:999px
+    .btn-outline{border:1px solid var(--line);background:#fff;color:var(--deep)}
+    .eyebrow{font-size:12px;letter-spacing:.22em;font-weight:800;color:var(--green)}
+    section{padding:88px 0}
+    h1,h2,h3,p{margin:0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:38px}
+    .section-head h2{font-size:clamp(30px,4.2vw,50px);line-height:1.15;letter-spacing:-.03em;color:var(--deep);margin-top:10px}
+    .section-head p{max-width:500px;color:var(--muted);line-height:1.8}
+
+    /* NAV + HERO */
+    .hero{
+      min-height:700px;position:relative;display:flex;align-items:flex-end;overflow:hidden;
+      background:linear-gradient(180deg,#94ab94 0%,#6d8c75 28%,#49644e 62%,#2e4738 100%);
+    }
+    .nav{
+      position:absolute;left:0;right:0;top:0;z-index:20;height:76px;color:white
+    }
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.08em}
+    .brand-mark{
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);backdrop-filter:blur(10px)
+    }
+    .nav-links{display:flex;gap:26px;font-size:14px}
+    .nav-links a{opacity:.92}
+    .nav-links a:hover{opacity:.7}
+
+    .sky-glow{position:absolute;right:8%;top:10%;width:220px;height:220px;border-radius:50%;background:rgba(255,238,194,.28)}
+    .mountains, .trees, .peach-orchard, .mist-layer, .grass{position:absolute;left:0;right:0}
+    .mountains{bottom:19%;height:54%;background:
+      linear-gradient(transparent,transparent),
+      linear-gradient(180deg, transparent 0%, transparent 45%, rgba(255,255,255,.06) 46%, transparent 47%);
+    }
+    .m1,.m2,.m3{
+      position:absolute;left:-6%;right:-6%;border-radius:40% 60% 0 0 / 50% 50% 0 0;
+      bottom:0
+    }
+    .m1{height:72%;background:#718e75;clip-path:polygon(0 62%,12% 44%,23% 58%,37% 34%,51% 59%,62% 32%,76% 53%,87% 38%,100% 55%,100% 100%,0 100%)}
+    .m2{height:56%;background:#54705a;clip-path:polygon(0 59%,10% 67%,24% 42%,36% 60%,50% 33%,63% 55%,76% 43%,89% 61%,100% 46%,100% 100%,0 100%)}
+    .m3{height:41%;background:#344d3d;clip-path:polygon(0 60%,14% 46%,24% 68%,40% 41%,54% 66%,69% 41%,81% 62%,91% 43%,100% 54%,100% 100%,0 100%)}
+    .mist-layer{bottom:18%;height:120px;background:radial-gradient(circle,rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 68%);filter:blur(18px);opacity:.7}
+    .trees{bottom:8%;height:29%}
+    .tree{
+      position:absolute;bottom:0;width:78px;height:160px
+    }
+    .tree .crown{
+      position:absolute;left:0;right:0;bottom:28px;height:110px;
+      background:radial-gradient(circle at 40% 30%,#6f8f69 0%,#517153 66%,#3b5745 100%);
+      border-radius:48% 52% 44% 56% / 42% 48% 52% 58%;
+      box-shadow:inset -8px -8px 20px rgba(34,55,38,.18)
+    }
+    .tree .trunk{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:0;width:14px;height:38px;border-radius:10px;background:#715945
+    }
+    .tree.t1{left:5%}.tree.t2{left:14%}.tree.t3{left:25%}.tree.t4{left:70%}.tree.t5{left:82%}.tree.t6{left:90%}
+    .peach-orchard{bottom:0;height:22%}
+    .orchard-row{
+      position:absolute;left:-3%;right:-3%;bottom:0;height:100%;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 22%), linear-gradient(0deg,#304838 0%, #3a563f 22%, #58715b 65%, transparent 100%);
+      clip-path:polygon(0 70%,8% 56%,18% 64%,28% 50%,40% 64%,51% 48%,61% 60%,72% 47%,84% 59%,100% 44%,100% 100%,0 100%);
+    }
+    .fruit{
+      position:absolute;width:18px;height:18px;border-radius:50%;
+      background:radial-gradient(circle at 35% 28%,#fff3ea 0 14%, #f7c4a8 20%, #e99378 66%, #cb735f 100%);
+      box-shadow:0 0 0 1px rgba(255,255,255,.08)
+    }
+    .fruit:after{
+      content:"";position:absolute;left:50%;top:-3px;transform:translateX(-50%) rotate(20deg);
+      width:8px;height:4px;background:#6a8c67;border-radius:8px
     }
 
-    /* SECTIONS */
-    section{padding:92px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:38px}
-    .kicker{font-size:12px;letter-spacing:.19em;font-weight:800;color:var(--green);margin-bottom:10px}
-    h2{font-size:clamp(30px,4.2vw,50px);line-height:1.15;letter-spacing:-.03em;margin:0;color:var(--deep)}
-    .section-head p{max-width:500px;color:var(--muted);line-height:1.8;margin:0}
+    .hero-content{position:relative;z-index:3;color:white;padding-bottom:74px;max-width:760px}
+    .hero-content .eyebrow{color:#eef5ee;opacity:.88;margin-bottom:14px}
+    .hero-content h1{font-size:clamp(42px,6.5vw,80px);line-height:1.04;letter-spacing:-.04em;margin-bottom:18px}
+    .hero-content p{font-size:clamp(16px,2vw,21px);line-height:1.8;color:rgba(255,255,255,.92);max-width:650px;margin-bottom:30px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-social{
+      display:flex;gap:10px;margin-top:18px
+    }
+    .social-pill{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)
+    }
+    .social-pill svg{width:18px;height:18px;fill:white}
+    .demo-label{
+      position:absolute;z-index:4;right:20px;bottom:18px;color:white;font-size:11px;
+      background:rgba(20,30,23,.65);padding:7px 11px;border-radius:999px
+    }
 
-    /* PRODUCTS */
+    /* quick links */
+    .quick-links{padding:0 0 20px;background:var(--paper);transform:translateY(-36px)}
+    .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .quick-card{
+      border:1px solid var(--line);border-radius:20px;background:#fff;padding:20px;box-shadow:0 12px 24px rgba(37,49,42,.05)
+    }
+    .quick-card strong{display:block;font-size:18px;color:var(--deep);margin:8px 0}
+    .quick-card p{color:var(--muted);font-size:14px;line-height:1.75}
+    .quick-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#eef3ed;color:var(--deep);font-size:18px}
+
+    /* products */
     .products{background:var(--cream)}
     .product-grid{display:grid;grid-template-columns:1.3fr .85fr;gap:22px}
     .product-card{
-      position:relative;min-height:450px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
+      position:relative;min-height:455px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
       color:white;isolation:isolate
     }
     .product-card.peach{
       background:
-        radial-gradient(circle at 72% 28%,#ffd9bd 0 7%,transparent 8%),
-        radial-gradient(circle at 70% 31%,#f4b28d 0 16%,transparent 17%),
-        radial-gradient(circle at 42% 43%,#f3c0a0 0 13%,transparent 14%),
-        linear-gradient(145deg,#8ca57d,#49644e 66%,#2c4737);
+        radial-gradient(circle at 78% 26%,rgba(255,245,230,.8) 0 5%, transparent 6%),
+        linear-gradient(145deg,#8da883 0%,#5f7d64 48%,#355041 100%);
     }
     .product-card.mushroom{
-      background:
-        radial-gradient(ellipse at 65% 38%,#b48e69 0 15%,transparent 16%),
-        radial-gradient(ellipse at 38% 54%,#8f6f54 0 13%,transparent 14%),
-        radial-gradient(ellipse at 68% 72%,#755a45 0 10%,transparent 11%),
-        linear-gradient(145deg,#d7c8ae,#7d705e 58%,#403a31);
+      background:linear-gradient(145deg,#d8c8ae 0%,#8f7b69 55%,#4c433b 100%);
     }
     .product-card:before{
-      content:"";position:absolute;inset:0;z-index:-1;
-      background:linear-gradient(180deg,transparent 25%,rgba(12,18,14,.78) 100%)
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(16,21,18,.76) 100%);z-index:0
     }
-    .product-art{position:absolute;inset:0;pointer-events:none}
-    .leaf{position:absolute;width:120px;height:48px;background:#678a66;border-radius:100% 0 100% 0;transform:rotate(-22deg);right:9%;top:18%;opacity:.75}
-    .peach-fruit{position:absolute;width:165px;height:150px;border-radius:52% 48% 54% 46%;background:radial-gradient(circle at 34% 27%,#ffe8d8 0 7%,#f8c3a2 30%,#e99073 76%,#c96f61 100%);right:16%;top:21%;box-shadow:inset -18px -20px 30px rgba(141,69,61,.13)}
-    .peach-fruit:after{content:"";position:absolute;width:1px;height:74%;background:rgba(164,90,78,.28);left:52%;top:13%;transform:rotate(7deg)}
-    .mushroom-cap{position:absolute;width:180px;height:95px;border-radius:100% 100% 35% 35%;background:radial-gradient(circle at 38% 35%,#d2b38f,#9a7558 65%,#6b513f);right:12%;top:26%;transform:rotate(-7deg)}
-    .mushroom-stem{position:absolute;width:58px;height:130px;border-radius:24px;background:linear-gradient(90deg,#e8dcc5,#b9a58d);right:25%;top:39%;transform:rotate(5deg)}
+    .product-art{position:absolute;inset:0}
+    /* peach art */
+    .peach-hill{position:absolute;left:-6%;right:-6%;bottom:-2%;height:46%;background:#466149;clip-path:polygon(0 56%,15% 48%,31% 60%,47% 45%,62% 60%,77% 47%,100% 58%,100% 100%,0 100%)}
+    .orchard-tree{position:absolute;bottom:20%;width:84px;height:125px}
+    .orchard-tree .c{position:absolute;left:0;right:0;bottom:18px;height:84px;background:radial-gradient(circle at 42% 30%,#7ea072 0%,#57744f 65%,#426245 100%);border-radius:50%}
+    .orchard-tree .t{position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:12px;height:28px;background:#705a44;border-radius:10px}
+    .orchard-tree.ot1{left:10%}.orchard-tree.ot2{left:28%}.orchard-tree.ot3{left:48%}.orchard-tree.ot4{left:68%}
+    .peach-big{position:absolute;right:10%;top:17%;width:190px;height:170px;border-radius:50% 50% 54% 46% / 44% 48% 52% 56%;
+      background:radial-gradient(circle at 32% 25%,#fff1e7 0 8%,#f8c9ad 25%,#ea9879 68%,#d17766 100%);
+      box-shadow:inset -15px -18px 28px rgba(130,72,63,.15)
+    }
+    .peach-big:before{
+      content:"";position:absolute;left:54%;top:15px;width:2px;height:72%;background:rgba(155,88,76,.28);transform:rotate(8deg)
+    }
+    .peach-leaf{position:absolute;right:22%;top:17%;width:82px;height:34px;background:#6f9467;border-radius:100% 0 100% 0;transform:rotate(-18deg)}
+    .small-peach{position:absolute;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff0e7 0 14%, #f7c5a9 20%, #e99478 66%, #cb745f 100%)}
+    .sp1{left:14%;bottom:38%}.sp2{left:35%;bottom:34%}.sp3{left:55%;bottom:41%}.sp4{left:74%;bottom:35%}
+    /* mushroom art */
+    .wood{
+      position:absolute;left:8%;right:8%;bottom:8%;height:95px;border-radius:28px;
+      background:linear-gradient(180deg,#6c5645,#4c3f34);transform:rotate(-5deg)
+    }
+    .wood:before{
+      content:"";position:absolute;left:14%;right:12%;top:18px;height:10px;background:rgba(255,255,255,.08);border-radius:999px
+    }
+    .mushroom-set{position:absolute;inset:0}
+    .cap{position:absolute;border-radius:100% 100% 40% 40%;background:radial-gradient(circle at 40% 35%,#d7b591,#9b785c 65%,#765a45 100%)}
+    .stem{position:absolute;background:linear-gradient(90deg,#ebdfc7,#c2b097);border-radius:26px}
+    .m1cap{width:140px;height:82px;left:18%;top:24%;transform:rotate(-7deg)}
+    .m1stem{width:42px;height:94px;left:31%;top:41%}
+    .m2cap{width:110px;height:66px;left:48%;top:31%;transform:rotate(8deg)}
+    .m2stem{width:34px;height:78px;left:59%;top:45%}
+    .m3cap{width:86px;height:54px;left:60%;top:20%;transform:rotate(-5deg)}
+    .m3stem{width:28px;height:64px;left:69%;top:31%}
+
     .product-info{position:absolute;left:0;right:0;bottom:0;padding:30px;z-index:2}
     .tag{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(0,0,0,.12);font-size:12px;margin-bottom:12px}
-    .product-info h3{font-size:31px;margin:0 0 8px}
-    .product-info p{margin:0 0 18px;color:rgba(255,255,255,.84);line-height:1.65}
+    .product-info h3{font-size:31px;margin-bottom:8px}
+    .product-info p{color:rgba(255,255,255,.86);line-height:1.65;margin-bottom:18px}
 
-    /* STORY */
-    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+    /* story */
+    .story-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:center}
     .story-card{
-      min-height:430px;border-radius:30px;position:relative;overflow:hidden;
-      background:linear-gradient(145deg,#dfe8dd,#f1dcc7)
+      min-height:430px;border-radius:30px;overflow:hidden;position:relative;background:linear-gradient(145deg,#d9e5da,#f1ddc9)
     }
-    .story-card:before{content:"山";position:absolute;right:-8px;bottom:-34px;font-size:250px;font-weight:900;color:rgba(50,72,58,.08)}
+    .story-card:before{
+      content:"";position:absolute;inset:0;background:
+        radial-gradient(circle at 70% 28%,rgba(255,255,255,.35) 0 9%,transparent 10%),
+        linear-gradient(180deg,transparent 0%, transparent 45%, rgba(56,79,62,.10) 46%, transparent 47%)
+    }
+    .story-mountains{
+      position:absolute;left:-5%;right:-5%;bottom:0;height:70%;
+      background:
+        linear-gradient(180deg,transparent,transparent),
+        linear-gradient(0deg,#5d7960 0%,#8ea58f 60%, transparent 100%);
+      clip-path:polygon(0 62%,16% 48%,32% 60%,45% 38%,58% 59%,73% 42%,86% 56%,100% 46%,100% 100%,0 100%)
+    }
     .story-quote{
       position:absolute;left:28px;right:28px;bottom:28px;
       padding:24px;border-radius:20px;background:rgba(255,255,255,.84);backdrop-filter:blur(10px);
       color:var(--deep);font-size:18px;line-height:1.75
     }
-    .story-copy p{color:var(--muted);line-height:1.9}
-    .placeholder{border-left:3px solid var(--peach);padding-left:18px;color:#806654!important}
+    .story-copy p{color:var(--muted);line-height:1.9;margin-top:14px}
+    .placeholder{border-left:3px solid var(--peach);padding-left:18px;color:#7d6353!important}
 
-    /* STEPS */
-    .steps{background:var(--deep);color:white}
-    .steps h2{color:white}.steps .kicker{color:#bfd0c1}.steps .section-head p{color:rgba(255,255,255,.68)}
-    .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .step{padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.05)}
-    .step-no{width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.12);font-weight:800;margin-bottom:22px}
-    .step h3{font-size:21px;margin:0 0 8px}.step p{margin:0;color:rgba(255,255,255,.7);line-height:1.7;font-size:14px}
+    /* order preview */
+    .order-preview{background:#f5f7f2}
+    .order-box{
+      border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:0 18px 44px rgba(46,63,52,.08);
+      display:grid;grid-template-columns:1fr 1fr;overflow:hidden
+    }
+    .receipt{
+      padding:34px;background:linear-gradient(180deg,#fff,#f8faf7)
+    }
+    .receipt h3{font-size:30px;color:var(--deep);margin:8px 0 14px}
+    .receipt p{color:var(--muted);line-height:1.8}
+    .receipt-card{
+      margin-top:20px;border:1px dashed rgba(38,49,41,.18);border-radius:18px;padding:18px;background:#fff
+    }
+    .receipt-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;color:var(--muted)}
+    .receipt-row strong{color:var(--deep)}
+    .after-ui{
+      padding:34px;background:linear-gradient(145deg,#314738,#44624d);color:#fff;position:relative
+    }
+    .after-ui:before{
+      content:"";position:absolute;right:24px;top:22px;width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.08)
+    }
+    .status{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.1);font-size:13px;margin-bottom:16px
+    }
+    .status i{width:10px;height:10px;border-radius:50%;background:#9ce0ab;display:inline-block}
+    .after-ui h4{font-size:28px;margin-bottom:10px}
+    .after-ui p{color:rgba(255,255,255,.78);line-height:1.75}
+    .after-links{display:grid;gap:12px;margin-top:22px}
+    .after-link{
+      display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)
+    }
 
-    /* LINE */
+    /* line section */
     .line-section{background:#edf2e9}
     .line-box{
       display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
       padding:44px;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:0 16px 38px rgba(48,72,55,.08)
     }
-    .line-box h3{font-size:31px;margin:0 0 10px;color:var(--deep)}
-    .line-box p{margin:0;color:var(--muted);line-height:1.8}
+    .line-box h3{font-size:31px;color:var(--deep);margin:10px 0}
+    .line-box p{color:var(--muted);line-height:1.8}
     .line-btn{background:#477a50;color:white;min-width:170px}
 
-    /* FOOTER */
+    /* footer */
     footer{background:#202b23;color:#fff;padding:45px 0}
     .footer-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
     footer small{display:block;margin-top:12px;color:rgba(255,255,255,.57);line-height:1.8}
-    .footer-links{display:flex;flex-wrap:wrap;gap:16px;color:rgba(255,255,255,.7);font-size:13px}
-
-    @media (hover:hover){
-      .btn:hover{transform:translateY(-1px)}
-      .nav-links a:hover{opacity:.7}
+    .footer-links{display:flex;flex-wrap:wrap;gap:16px;color:rgba(255,255,255,.72);font-size:13px}
+    .footer-social{display:flex;gap:10px;margin-top:18px}
+    .footer-social a{
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)
     }
+    .footer-social svg{width:18px;height:18px;fill:white}
 
+    @media (max-width:880px){
+      .quick-grid{grid-template-columns:repeat(2,1fr)}
+      .order-box{grid-template-columns:1fr}
+    }
     @media (max-width:760px){
       .container{width:min(100% - 32px,1180px)}
       .nav{height:66px}.nav-links{display:none}.brand{font-size:14px}
-      .hero{min-height:620px}.hero-content{padding-bottom:54px}.hero h1{font-size:43px}.hero p{font-size:16px}
+      .hero{min-height:640px}.hero-content{padding-bottom:56px}
+      .hero-content h1{font-size:42px}
+      .hero-content p{font-size:16px}
       .cta{display:grid;grid-template-columns:1fr}.btn{width:100%}
-      section{padding:66px 0}
+      .hero-social{justify-content:flex-start}
+      section{padding:68px 0}
       .section-head{display:block}.section-head p{margin-top:16px}
-      .product-grid{grid-template-columns:1fr}.product-card{min-height:390px}
-      .product-info h3{font-size:27px}
-      .story-grid{grid-template-columns:1fr;gap:30px}.story-card{min-height:340px}
-      .step-grid{grid-template-columns:1fr}
+      .quick-links{transform:translateY(-24px)}
+      .quick-grid{grid-template-columns:1fr}
+      .product-grid{grid-template-columns:1fr}.product-card{min-height:410px}
+      .story-grid{grid-template-columns:1fr;gap:28px}.story-card{min-height:340px}
       .line-box{grid-template-columns:1fr;padding:28px}.line-btn{width:100%}
-      .footer-inner{display:block}.footer-links{margin-top:25px}
-      .demo-label{right:12px;bottom:12px}
+      .footer-inner{display:block}.footer-links{margin-top:24px}
+      .peach-big{width:150px;height:136px;right:8%;top:18%}
     }
   </style>
 </head>
 <body>
   <header class="hero" id="top">
-    <div class="mountain-scene" aria-hidden="true">
-      <div class="sun"></div>
-      <div class="ridge r1"></div><div class="mist m1"></div>
-      <div class="ridge r2"></div><div class="mist m2"></div>
-      <div class="ridge r3"></div>
-    </div>
-
     <nav class="nav">
       <div class="container nav-inner">
         <a class="brand" href="#top">
@@ -206,135 +311,223 @@
         <div class="nav-links">
           <a href="#story">形象故事</a>
           <a href="#products">商品訂購</a>
+          <a href="#order-after">購物完成頁</a>
           <a href="#line">LINE 官方</a>
         </div>
       </div>
     </nav>
 
+    <div class="sky-glow" aria-hidden="true"></div>
+    <div class="mountains" aria-hidden="true">
+      <div class="m1"></div><div class="m2"></div><div class="m3"></div>
+    </div>
+    <div class="mist-layer" aria-hidden="true"></div>
+    <div class="trees" aria-hidden="true">
+      <div class="tree t1"><div class="crown"></div><div class="trunk"></div></div>
+      <div class="tree t2"><div class="crown"></div><div class="trunk"></div></div>
+      <div class="tree t3"><div class="crown"></div><div class="trunk"></div></div>
+      <div class="tree t4"><div class="crown"></div><div class="trunk"></div></div>
+      <div class="tree t5"><div class="crown"></div><div class="trunk"></div></div>
+      <div class="tree t6"><div class="crown"></div><div class="trunk"></div></div>
+    </div>
+    <div class="peach-orchard" aria-hidden="true">
+      <div class="orchard-row"></div>
+      <div class="fruit" style="left:9%;bottom:48%"></div>
+      <div class="fruit" style="left:21%;bottom:34%"></div>
+      <div class="fruit" style="left:30%;bottom:44%"></div>
+      <div class="fruit" style="left:43%;bottom:30%"></div>
+      <div class="fruit" style="left:56%;bottom:42%"></div>
+      <div class="fruit" style="left:66%;bottom:31%"></div>
+      <div class="fruit" style="left:79%;bottom:46%"></div>
+    </div>
+
     <div class="container">
       <div class="hero-content">
         <div class="eyebrow">LUGA FARM · LALA MOUNTAIN</div>
-        <h1>山裡種的，<br>慢慢送到你手裡。</h1>
-        <p>拉拉山水蜜桃與椴木香菇。第一年的網站先把產地、訂購與服務做好，讓每一份農產都有清楚的來處。</p>
+        <h1>回到山上，<br>把果園慢慢做好。</h1>
+        <p>拉拉山水蜜桃與椴木香菇。首頁先用更貼近果園氛圍的視覺，讓人一打開就感受到山、果樹、霧氣與產地的味道。</p>
         <div class="cta">
           <a class="btn btn-light" href="#products">商品訂購</a>
-          <a class="btn btn-ghost" href="#story">走進果園</a>
+          <a class="btn btn-ghost" href="#story">形象故事</a>
+        </div>
+        <div class="hero-social" aria-label="社群連結示意">
+          <a class="social-pill" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.2 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z"/></svg>
+          </a>
+          <a class="social-pill" href="#" aria-label="Threads">
+            <svg viewBox="0 0 24 24"><path d="M15.8 10.2c-.2-1.8-1.6-3-3.8-3-2.2 0-4 1.2-4.9 3.3l1.8.9c.6-1.4 1.7-2.1 3-2.1 1.1 0 1.8.4 2 1.2-3.2.1-6 1.3-6 4.1 0 2 1.6 3.4 4 3.4 1.6 0 2.8-.5 3.5-1.5.2.8.7 1.4 1.7 1.4 1.1 0 1.9-.9 1.9-2.5 0-2.5-1.1-4.5-3.2-5.9Zm-3.5 5.8c-1.2 0-2-.5-2-1.5 0-1.4 1.7-1.9 4.3-2v.5c0 1.9-.9 3-2.3 3Zm-.3 6c-5.2 0-9.3-3.7-9.3-9.9C2.7 5.6 6.8 2 12 2c5.1 0 9.3 3.6 9.3 10 0 6-3.9 10-9.3 10Zm0-18c-4 0-7 2.8-7 8.1 0 5.5 3.1 7.9 7 7.9s7-2.4 7-8c0-5.3-3-8-7-8Z"/></svg>
+          </a>
+          <a class="social-pill" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.4 22v-8.1H16l.4-3h-3V9c0-.9.2-1.5 1.5-1.5h1.6V4.8c-.3 0-1.2-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.1H7.5v3h2.6V22h3.3Z"/></svg>
+          </a>
         </div>
       </div>
     </div>
-    <div class="demo-label">首頁提案樣板 V1｜正式版換自有照片</div>
+    <div class="demo-label">首頁提案樣板 V2｜增加社群與購後頁示意</div>
   </header>
 
-  <main>
-    <section class="products" id="products">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">SEASONAL GOODS</div>
-            <h2>從山上，挑當季最好的。</h2>
-          </div>
-          <p>第一年以少量品項、清楚規格、預購制度為核心。介面先簡單，讓客人容易選、容易買、也容易知道何時出貨。</p>
+  <section class="quick-links">
+    <div class="container">
+      <div class="quick-grid">
+        <div class="quick-card">
+          <div class="quick-icon">🍑</div>
+          <strong>當季預購</strong>
+          <p>先把水蜜桃主力規格與出貨邏輯做清楚。</p>
         </div>
-
-        <div class="product-grid">
-          <article class="product-card peach">
-            <div class="product-art" aria-hidden="true">
-              <div class="leaf"></div><div class="peach-fruit"></div>
-            </div>
-            <div class="product-info">
-              <span class="tag">產季預購 · 主力商品</span>
-              <h3>拉拉山水蜜桃</h3>
-              <p>8 入／10 入／12 入，依成熟度採收、分批出貨。</p>
-              <a class="btn btn-light" href="#">查看預購規格</a>
-            </div>
-          </article>
-
-          <article class="product-card mushroom">
-            <div class="product-art" aria-hidden="true">
-              <div class="mushroom-stem"></div><div class="mushroom-cap"></div>
-            </div>
-            <div class="product-info">
-              <span class="tag">山產乾貨</span>
-              <h3>椴木香菇</h3>
-              <p>自家栽培，讓網站不只在桃季有東西可看、可買。</p>
-              <a class="btn btn-light" href="#">了解香菇</a>
-            </div>
-          </article>
+        <div class="quick-card">
+          <div class="quick-icon">🍄</div>
+          <strong>椴木香菇</strong>
+          <p>不是陪襯，而是全年都可慢慢經營的穩定商品。</p>
+        </div>
+        <div class="quick-card">
+          <div class="quick-icon">💬</div>
+          <strong>LINE／社群</strong>
+          <p>加入 LINE、IG、Threads、FB，形成互動入口。</p>
+        </div>
+        <div class="quick-card">
+          <div class="quick-icon">📦</div>
+          <strong>購後頁面</strong>
+          <p>讓客人知道訂單成立後，接下來會發生什麼。</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="story">
-      <div class="container story-grid">
-        <div class="story-card">
-          <div class="story-quote">「有些人離開山裡，是為了生活；也有人走了一圈，最後決定回來。」</div>
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">SEASONAL GOODS</div>
+          <h2>從山上，挑當季最好的。</h2>
+        </div>
+        <p>第一年先把商品入口做得簡單、好懂。水蜜桃主打產季預購，椴木香菇則補足網站在非桃季的穩定存在。</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card peach">
+          <div class="product-art" aria-hidden="true">
+            <div class="peach-hill"></div>
+            <div class="orchard-tree ot1"><div class="c"></div><div class="t"></div></div>
+            <div class="orchard-tree ot2"><div class="c"></div><div class="t"></div></div>
+            <div class="orchard-tree ot3"><div class="c"></div><div class="t"></div></div>
+            <div class="orchard-tree ot4"><div class="c"></div><div class="t"></div></div>
+            <div class="peach-leaf"></div><div class="peach-big"></div>
+            <div class="small-peach sp1"></div><div class="small-peach sp2"></div><div class="small-peach sp3"></div><div class="small-peach sp4"></div>
+          </div>
+          <div class="product-info">
+            <span class="tag">產季預購 · 主力商品</span>
+            <h3>拉拉山水蜜桃</h3>
+            <p>8 入／10 入／12 入，依成熟度採收、分批出貨。</p>
+            <a class="btn btn-light" href="#">查看預購規格</a>
+          </div>
+        </article>
+
+        <article class="product-card mushroom">
+          <div class="product-art" aria-hidden="true">
+            <div class="wood"></div>
+            <div class="mushroom-set">
+              <div class="cap m1cap"></div><div class="stem m1stem"></div>
+              <div class="cap m2cap"></div><div class="stem m2stem"></div>
+              <div class="cap m3cap"></div><div class="stem m3stem"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="tag">山產乾貨</span>
+            <h3>椴木香菇</h3>
+            <p>更新成更接近椴木香菇的視覺符號，也讓它在首頁有自己的存在感。</p>
+            <a class="btn btn-light" href="#">了解香菇</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="container story-grid">
+      <div class="story-card">
+        <div class="story-mountains"></div>
+        <div class="story-quote">「有些人離開山裡，是為了生活；也有人走了一圈，最後決定回來。」</div>
+      </div>
+      <div class="story-copy">
+        <div class="eyebrow">OUR STORY</div>
+        <h2 style="font-size:clamp(30px,4.2vw,48px);line-height:1.15;letter-spacing:-.03em;color:var(--deep);margin-top:10px;">回到山上的故事，慢慢寫。</h2>
+        <p>這裡將會成為品牌最有辨識度的內容：弟弟為什麼回到拉拉山、怎麼重新開始農業生活、一路成為百大青農，以及果園與家人的關係。</p>
+        <p class="placeholder">此區目前先留鮮明概念，不急著一次把故事寫滿。正式版等訪談、照片、時間線整理好，再完整製作。</p>
+        <p><a class="btn btn-dark" href="#top">故事頁概念入口</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="order-preview" id="order-after">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">AFTER PURCHASE</div>
+          <h2>新增購物完成頁面示意。</h2>
+        </div>
+        <p>購物完成頁不是只有「謝謝購買」而已，還要告訴客人：訂單成立了、下一步是什麼、怎麼查詢、怎麼加入 LINE，讓整體流程更完整。</p>
+      </div>
+
+      <div class="order-box">
+        <div class="receipt">
+          <div class="eyebrow">ORDER SUMMARY</div>
+          <h3>訂購完成，安心等桃子下山。</h3>
+          <p>這一頁會在客人結帳完成後出現，讓他知道：訂單已成立、付款已收到、預估出貨區間，以及後續如何查詢。</p>
+
+          <div class="receipt-card">
+            <div class="receipt-row"><span>訂單編號</span><strong>LG2027-000128</strong></div>
+            <div class="receipt-row"><span>商品內容</span><strong>水蜜桃 10 入 × 2</strong></div>
+            <div class="receipt-row"><span>付款方式</span><strong>信用卡付款</strong></div>
+            <div class="receipt-row"><span>預計出貨</span><strong>6 月上旬～中旬</strong></div>
+          </div>
+
+          <p style="margin-top:18px;"><a class="btn btn-outline" href="order-success.html">查看獨立購後頁</a></p>
         </div>
 
-        <div class="story-copy">
-          <div class="kicker">OUR STORY</div>
-          <h2>回到山上的故事，慢慢寫。</h2>
-          <p>這裡未來會成為品牌最有辨識度的內容：回到拉拉山、重新開始農業生活、一路成為百大青農，以及果園與家人的關係。</p>
-          <p class="placeholder">此區目前先留「鮮明概念」，不急著一次把故事寫滿。正式版等訪談、照片與時間線整理好，再完整製作。</p>
-          <a class="btn btn-dark" href="#top">故事頁概念入口</a>
+        <div class="after-ui">
+          <div class="status"><i></i> 已收到訂單與付款資訊</div>
+          <h4>接下來，我們會這樣照顧你。</h4>
+          <p>當桃子接近採收、完成出貨、需要客服協助時，客人都能從這裡或 LINE 找到下一步，不會買完就失去方向。</p>
+          <div class="after-links">
+            <div class="after-link"><span>加入 LINE 接收出貨通知</span><strong>→</strong></div>
+            <div class="after-link"><span>查看我的訂單</span><strong>→</strong></div>
+            <div class="after-link"><span>保存與食用建議</span><strong>→</strong></div>
+            <div class="after-link"><span>售後服務與問題回報</span><strong>→</strong></div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="steps">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">HOW TO ORDER</div>
-            <h2>第一次來，也能很快買懂。</h2>
-          </div>
-          <p>第一年網站最優先完成的，不是炫技，而是讓陌生客人從商品選擇到付款完成都沒有疑問。</p>
+  <section class="line-section" id="line">
+    <div class="container">
+      <div class="line-box">
+        <div>
+          <div class="eyebrow">LINE OFFICIAL</div>
+          <h3>買完之後，我們還在。</h3>
+          <p>LINE 官方帳號作為訂單後的互動橋樑：預購提醒、出貨通知、保存方式、售後服務，以及下一季把熟客重新找回來。</p>
         </div>
-
-        <div class="step-grid">
-          <div class="step">
-            <div class="step-no">01</div>
-            <h3>選擇商品</h3>
-            <p>清楚看見規格、價格、限購數量與預計出貨區間。</p>
-          </div>
-          <div class="step">
-            <div class="step-no">02</div>
-            <h3>線上預購付款</h3>
-            <p>會員資料、配送資訊與金流在一條流程內完成。</p>
-          </div>
-          <div class="step">
-            <div class="step-no">03</div>
-            <h3>成熟後出貨</h3>
-            <p>依果實成熟度安排採收，透過網站與 LINE 持續通知。</p>
-          </div>
-        </div>
+        <a class="btn line-btn" href="#">加入 LINE（示意）</a>
       </div>
-    </section>
-
-    <section class="line-section" id="line">
-      <div class="container">
-        <div class="line-box">
-          <div>
-            <div class="kicker">LINE OFFICIAL</div>
-            <h3>買完之後，我們還在。</h3>
-            <p>LINE 官方帳號作為訂單後的互動橋樑：預購提醒、出貨通知、保存方式、售後服務，以及下一季把熟客重新找回來。</p>
-          </div>
-          <a class="btn line-btn" href="#">加入 LINE（示意）</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
     <div class="container footer-inner">
       <div>
-        <div class="brand">
-          <span class="brand-mark">露</span>
-          <span>露嘎果園 · 拉拉山</span>
+        <div class="brand"><span class="brand-mark">露</span><span>露嘎果園 · 拉拉山</span></div>
+        <small>桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>首頁概念樣板 V2 · 加入社群與購物完成頁示意</small>
+        <div class="footer-social" aria-label="社群連結">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.2 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z"/></svg>
+          </a>
+          <a href="#" aria-label="Threads">
+            <svg viewBox="0 0 24 24"><path d="M15.8 10.2c-.2-1.8-1.6-3-3.8-3-2.2 0-4 1.2-4.9 3.3l1.8.9c.6-1.4 1.7-2.1 3-2.1 1.1 0 1.8.4 2 1.2-3.2.1-6 1.3-6 4.1 0 2 1.6 3.4 4 3.4 1.6 0 2.8-.5 3.5-1.5.2.8.7 1.4 1.7 1.4 1.1 0 1.9-.9 1.9-2.5 0-2.5-1.1-4.5-3.2-5.9Zm-3.5 5.8c-1.2 0-2-.5-2-1.5 0-1.4 1.7-1.9 4.3-2v.5c0 1.9-.9 3-2.3 3Zm-.3 6c-5.2 0-9.3-3.7-9.3-9.9C2.7 5.6 6.8 2 12 2c5.1 0 9.3 3.6 9.3 10 0 6-3.9 10-9.3 10Zm0-18c-4 0-7 2.8-7 8.1 0 5.5 3.1 7.9 7 7.9s7-2.4 7-8c0-5.3-3-8-7-8Z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.4 22v-8.1H16l.4-3h-3V9c0-.9.2-1.5 1.5-1.5h1.6V4.8c-.3 0-1.2-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.1H7.5v3h2.6V22h3.3Z"/></svg>
+          </a>
         </div>
-        <small>
-          桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>
-          首頁概念樣板 V1 · 非正式上線版本
-        </small>
       </div>
       <div class="footer-links">
         <span>購買須知</span><span>配送說明</span><span>售後服務</span><span>隱私權政策</span><span>聯絡我們</span>
