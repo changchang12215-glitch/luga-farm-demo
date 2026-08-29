@@ -2,14 +2,16 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>頎邦科技員工預購｜嘍嘎果園</title>
+<title>頎邦科技員工團購｜嘍嘎果園</title>
 <style>
 :root{
   --forest:#284333;--forest2:#456651;--ink:#25312a;--muted:#6d776f;
   --paper:#fffdf8;--cream:#f4efe5;--cream2:#faf7f0;--peach:#d89472;
-  --peach2:#b96f54;--line:rgba(40,67,51,.14);--shadow:0 18px 50px rgba(33,48,38,.10)
+  --peach2:#b96f54;--line:rgba(40,67,51,.14);--shadow:0 18px 50px rgba(33,48,38,.10);
+  --good:#477358;--warn:#9a694c
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif}
 a{text-decoration:none;color:inherit}
@@ -26,14 +28,15 @@ font-family:"Noto Serif TC","PMingLiU",serif;font-size:26px;font-weight:900}
 .navlinks{display:flex;gap:6px;overflow:auto}
 .navlinks a{white-space:nowrap;padding:10px 12px;border-radius:10px;font-weight:850;font-size:14px;color:#35503e}
 .navlinks a:hover{background:#edf2ed}
-.pagehead{padding:58px 0 32px}
+.pagehead{padding:54px 0 30px}
 .eyebrow{font-size:12px;letter-spacing:.17em;font-weight:900;color:var(--forest2)}
 h1{font-size:clamp(36px,5vw,58px);line-height:1.1;letter-spacing:-.04em;color:var(--forest);margin:9px 0 14px}
-.lead{color:var(--muted);line-height:1.9;max-width:850px}
+.lead{color:var(--muted);line-height:1.9;max-width:900px}
 .card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 35px rgba(33,48,38,.07)}
 .btn{border:0;border-radius:13px;min-height:48px;padding:0 20px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .btn-dark{background:var(--forest);color:#fff}
 .btn-light{background:#fff;color:var(--forest);border:1px solid var(--line)}
+.btn-peach{background:var(--peach2);color:#fff}
 .notice{border-radius:17px;background:#f7f2ea;border:1px solid var(--line);padding:16px 18px;color:#5d675f;line-height:1.75;font-size:14px}
 .notice strong{color:var(--forest)}
 footer{margin-top:70px;background:#1c2b21;color:#fff;padding:36px 0}
@@ -43,45 +46,90 @@ footer small{color:rgba(255,255,255,.6);line-height:1.8}
  .pagehead{padding-top:38px}
 }
 
-.shell{padding:10px 0 90px}
+.shell{padding:8px 0 90px}
 .login{max-width:620px;margin:auto;padding:28px}
 .login h2{margin:0 0 8px;color:var(--forest)}
 .formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
-.field{display:grid;gap:7px} .field.full{grid-column:1/-1}
+.field{display:grid;gap:7px}
 .field label{font-size:13px;font-weight:900;color:var(--forest)}
-.field input,.field select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.field input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
 .login .btn{width:100%;margin-top:18px}
 
-.order{display:none;margin-top:26px}
+.order{display:none}
 .order.show{display:block}
-.welcome{padding:18px 20px;margin-bottom:18px;background:#eef4ef;border:1px solid #dbe8dd;border-radius:18px;color:var(--forest)}
+.welcome{padding:17px 19px;margin-bottom:18px;background:#eef4ef;border:1px solid #dbe8dd;border-radius:18px;color:var(--forest)}
+
+/* progress */
+.progress-card{padding:25px;margin-bottom:20px}
+.progress-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.progress-head h2{margin:0 0 6px;color:var(--forest);font-size:25px}
+.batch-switch{display:flex;gap:7px;flex-wrap:wrap}
+.batch-btn{border:1px solid var(--line);background:#fff;color:var(--forest);border-radius:999px;padding:8px 12px;font-weight:850;font-size:12px}
+.batch-btn.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.big-number{margin-top:22px;font-size:42px;font-weight:950;color:var(--forest);letter-spacing:-.04em}
+.big-number small{font-size:14px;color:var(--muted);font-weight:800}
+.bar{height:15px;background:#ece8df;border-radius:999px;overflow:hidden;margin:12px 0 17px}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--forest2),var(--peach));border-radius:inherit;transition:width .25s}
+.milestones{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.milestone{padding:12px;border-radius:14px;background:var(--cream2);border:1px solid var(--line);text-align:center}
+.milestone strong{display:block;color:var(--forest);font-size:17px}
+.milestone span{font-size:11px;color:var(--muted)}
+.milestone.reached{background:#eaf3ec;border-color:#d5e6d9}
+.next-box{margin-top:15px;border-radius:14px;background:#fff3ea;padding:13px 15px;color:#765849;font-size:13px;line-height:1.65}
+.next-box strong{color:var(--peach2)}
+.lock-note{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.65}
+
+/* products */
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .product{padding:22px}
 .product h3{font-size:24px;color:var(--forest);margin:0 0 4px}
-.product .tag{color:#795d4c;font-weight:850;margin-bottom:14px}
-.qty{display:grid;grid-template-columns:44px 1fr 44px;gap:8px;margin-top:15px}
+.product .tag{color:#795d4c;font-weight:850;margin-bottom:9px}
+.baseprice{font-size:24px;color:var(--peach2);font-weight:950;margin-bottom:7px}
+.refprice{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:13px}
+.qty{display:grid;grid-template-columns:44px 1fr 44px;gap:8px}
 .qty button{border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--forest);font-size:20px}
 .qty input{width:100%;padding:11px;text-align:center;border:1px solid var(--line);border-radius:11px}
+
+/* summary */
 .delivery{margin-top:20px;padding:24px}
 .delivery h2{color:var(--forest);margin-top:0}
 .batchgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .batch{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:15px;padding:15px;background:var(--cream2)}
 .batch strong{display:block;color:var(--forest);margin-bottom:3px}
 .batch small{color:var(--muted);line-height:1.55}
+.free{margin-top:15px;padding:14px;border-radius:13px;background:#eef4ef;color:#526a59;font-size:13px;line-height:1.7}
+
 .summary{margin-top:20px;padding:24px}
+.summary h2{margin-top:0;color:var(--forest)}
 .sumrow{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line)}
 .sumrow:last-child{border-bottom:0}
-.summary .btn{width:100%;margin-top:18px}
-.free{margin-top:15px;padding:14px;border-radius:13px;background:#eef4ef;color:#526a59;font-size:13px;line-height:1.7}
-.done{display:none;max-width:700px;margin:26px auto 0;padding:30px;text-align:center}
+.reference-total{margin-top:15px;border-radius:15px;background:var(--cream2);padding:16px}
+.reference-total .price{font-size:27px;color:var(--peach2);font-weight:950}
+.reference-total small{color:var(--muted);line-height:1.65}
+.summary .btn{width:100%;margin-top:17px}
+
+.myorder{display:none;margin-top:20px;padding:24px}
+.myorder.show{display:block}
+.myorder h2{margin-top:0;color:var(--forest)}
+.actionbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+
+/* completion */
+.done{display:none;max-width:760px;margin:26px auto 0;padding:30px;text-align:center}
 .done.show{display:block}
 .done h2{color:var(--forest);font-size:30px}
 .done .icon{font-size:50px;margin-bottom:10px}
+.statuspill{display:inline-flex;padding:7px 11px;border-radius:999px;background:#fff3ea;color:#7a5949;font-size:12px;font-weight:900;margin:5px 0 15px}
+
 @media(max-width:760px){
  .formgrid,.products,.batchgrid{grid-template-columns:1fr}
- .field.full{grid-column:auto}
+ .progress-head{display:block}
+ .batch-switch{margin-top:13px}
+ .milestones{grid-template-columns:1fr 1fr 1fr}
+ .progress-card,.delivery,.summary{padding:20px}
+ .big-number{font-size:35px}
 }
 </style></head>
+
 <body>
 <header class="topbar"><div class="container nav">
 <a class="brand" href="index.html"><span class="mark">嘍</span><b>嘍嘎果園</b></a>
@@ -90,45 +138,90 @@ footer small{color:rgba(255,255,255,.6);line-height:1.8}
 
 <main>
 <section class="pagehead"><div class="container">
-<div class="eyebrow">CHIPBOND EMPLOYEE PRE-ORDER</div>
-<h1>頎邦科技員工預購</h1>
-<p class="lead">2027 第一版僅作員工專屬團購。這裡不計個別宅配費，也不在線上收款；只記錄訂購規格、盒數與指定公司配送批次。</p>
+<div class="eyebrow">CHIPBOND GROUP PRE-ORDER · 2027</div>
+<h1>頎邦科技員工團購</h1>
+<p class="lead">
+先登記想要的規格與盒數，活動期間可再追加。同一配送批次的全公司總盒數越多，所有參與者一起享有更高折扣；活動截止當天鎖定最終折扣，再依最終價格通知匯款。
+</p>
 </div></section>
 
 <section class="shell"><div class="container">
 
 <div class="card login" id="loginBox">
   <h2>員工資料</h2>
-  <p style="color:var(--muted);line-height:1.7;margin:0">請先輸入工號與姓名，再進入員工專屬選購頁。</p>
+  <p style="color:var(--muted);line-height:1.7;margin:0">請輸入工號與姓名，進入頎邦員工專屬團購。</p>
   <div class="formgrid">
     <div class="field"><label>工號 *</label><input id="employeeId" autocomplete="off" placeholder="請輸入工號"></div>
     <div class="field"><label>姓名 *</label><input id="employeeName" autocomplete="name" placeholder="請輸入姓名"></div>
   </div>
-  <button class="btn btn-dark" id="enterBtn" type="button">進入員工預購</button>
+  <button class="btn btn-dark" id="enterBtn" type="button">進入員工團購</button>
 </div>
 
 <div class="order" id="orderBox">
   <div class="welcome" id="welcome"></div>
 
+  <div class="card progress-card">
+    <div class="progress-head">
+      <div>
+        <div class="eyebrow">GROUP PROGRESS</div>
+        <h2>頎邦團購進度</h2>
+      </div>
+      <div class="batch-switch">
+        <button class="batch-btn active" type="button" data-progress-batch="may">5 月中旬批次</button>
+        <button class="batch-btn" type="button" data-progress-batch="july">7 月批次</button>
+      </div>
+    </div>
+
+    <div class="big-number"><span id="companyBoxes">0</span> / 100 <small>盒</small></div>
+    <div class="bar"><span id="progressBar"></span></div>
+
+    <div class="milestones">
+      <div class="milestone" data-tier="50"><strong>50 盒</strong><span>全團 2% 優惠</span></div>
+      <div class="milestone" data-tier="75"><strong>75 盒</strong><span>全團 4% 優惠</span></div>
+      <div class="milestone" data-tier="100"><strong>100 盒</strong><span>全團 8% 優惠</span></div>
+    </div>
+
+    <div class="next-box" id="nextMessage"></div>
+    <div class="lock-note">
+      ※ V2 目前尚未連接資料庫，因此全公司總盒數使用「展示值」。正式版會由所有員工訂單即時彙整，同一批次最高 100 盒。
+    </div>
+  </div>
+
   <div class="notice" style="margin-bottom:18px">
-    <strong>團體訂購規則：</strong>此入口不顯示價格、不計個別運費，也不需線上付款。請只確認想訂購的規格、盒數與公司配送批次。
+    <strong>折扣規則：</strong>
+    1–49 盒原價｜50–74 盒 2%｜75–99 盒 4%｜100 盒 8%。活動期間可以追加自己的數量；最終折扣以活動截止當天該配送批次的總盒數為準。
   </div>
 
   <div class="products">
-    <article class="card product" data-count="6">
-      <h3>6 粒裝</h3><div class="tag">豪華送禮版</div>
+    <article class="card product" data-count="6" data-price="800">
+      <h3>6 粒裝</h3>
+      <div class="tag">豪華送禮版</div>
+      <div class="baseprice">NT$800／盒</div>
+      <div class="refprice" data-ref-price>目前參考：原價。最終金額於活動截止日鎖定。</div>
       <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
     </article>
-    <article class="card product" data-count="8">
-      <h3>8 粒裝</h3><div class="tag">送禮自用兩相宜</div>
+
+    <article class="card product" data-count="8" data-price="720">
+      <h3>8 粒裝</h3>
+      <div class="tag">送禮自用兩相宜</div>
+      <div class="baseprice">NT$720／盒</div>
+      <div class="refprice" data-ref-price>目前參考：原價。最終金額於活動截止日鎖定。</div>
       <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
     </article>
-    <article class="card product" data-count="10">
-      <h3>10 粒裝</h3><div class="tag">人氣首選</div>
+
+    <article class="card product" data-count="10" data-price="600">
+      <h3>10 粒裝</h3>
+      <div class="tag">人氣首選</div>
+      <div class="baseprice">NT$600／盒</div>
+      <div class="refprice" data-ref-price>目前參考：原價。最終金額於活動截止日鎖定。</div>
       <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
     </article>
-    <article class="card product" data-count="12">
-      <h3>12 粒裝</h3><div class="tag">經濟實惠</div>
+
+    <article class="card product" data-count="12" data-price="480">
+      <h3>12 粒裝</h3>
+      <div class="tag">經濟實惠</div>
+      <div class="baseprice">NT$480／盒</div>
+      <div class="refprice" data-ref-price>目前參考：原價。最終金額於活動截止日鎖定。</div>
       <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
     </article>
   </div>
@@ -137,102 +230,241 @@ footer small{color:rgba(255,255,255,.6);line-height:1.8}
     <h2>選擇公司配送批次</h2>
     <div class="batchgrid">
       <label class="batch">
-        <input type="radio" name="batch" value="五月中旬" checked>
-        <span><strong>第一批｜5 月中旬</strong><small>實際日期與公司領取地點後續公告。</small></span>
+        <input type="radio" name="batch" value="may" checked>
+        <span><strong>第一批｜5 月中旬</strong><small>單批最高 100 盒。實際配送日期與公司領取地點後續公告。</small></span>
       </label>
       <label class="batch">
-        <input type="radio" name="batch" value="七月">
-        <span><strong>第二批｜7 月</strong><small>實際日期與公司領取地點後續公告。</small></span>
+        <input type="radio" name="batch" value="july">
+        <span><strong>第二批｜7 月</strong><small>單批最高 100 盒。實際配送日期與公司領取地點後續公告。</small></span>
       </label>
     </div>
     <div class="free">
       🚗 <strong>團體統一配送｜個別運費 NT$0</strong><br>
-      本批次由團購窗口統一帶至公司，不走每一位員工的個別黑貓宅配。
+      由團購窗口統一帶至公司，不走員工個別黑貓宅配。
     </div>
   </div>
 
   <div class="card summary">
-    <h2 style="margin-top:0;color:var(--forest)">訂購摘要</h2>
+    <h2>我的預購摘要</h2>
     <div id="summaryLines"></div>
-    <div class="sumrow"><span>總盒數</span><strong id="totalBoxes">0 盒</strong></div>
-    <button class="btn btn-dark" id="submitOrder" type="button">完成員工預購</button>
+    <div class="sumrow"><span>我的總盒數</span><strong id="myBoxes">0 盒</strong></div>
+    <div class="sumrow"><span>原價小計</span><strong id="baseTotal">NT$0</strong></div>
+
+    <div class="reference-total">
+      <small>依目前團購進度試算</small>
+      <div class="price" id="referenceTotal">NT$0</div>
+      <small id="discountText">目前尚未達折扣門檻。此金額僅供參考，活動截止當天才鎖定最終應付金額。</small>
+    </div>
+
+    <button class="btn btn-dark" id="submitOrder" type="button">先確定我的預購數量</button>
+  </div>
+
+  <div class="card myorder" id="myOrderBox">
+    <h2>我的團購訂單</h2>
+    <p style="color:var(--muted);line-height:1.8">
+      已先保留你的登記資料。活動截止前可以回來增加或調整盒數；正式版會以工號＋姓名識別同一張團購訂單，不會每次追加都產生新訂單。
+    </p>
+    <div id="myOrderDetail"></div>
+    <div class="actionbar">
+      <button class="btn btn-dark" id="editOrder" type="button">追加／修改數量</button>
+    </div>
   </div>
 </div>
 
 <div class="card done" id="doneBox">
   <div class="icon">✓</div>
-  <h2>預購資料已完成（展示版）</h2>
+  <h2>團購登記完成（展示版）</h2>
+  <span class="statuspill">尚未要求付款</span>
   <p id="doneText" style="color:var(--muted);line-height:1.8"></p>
-  <div class="notice">
-    此 V1 目前只在瀏覽器展示流程，尚未真的送進後台。正式版會把工號、姓名、規格、盒數與配送批次存入團體訂單。
+
+  <div class="notice" style="text-align:left">
+    <strong>接下來：</strong><br>
+    活動期間可以再追加數量 → 活動截止當天鎖定全團折扣 → 系統計算每人最終應付金額 → 顯示／通知匯款帳號與付款期限 → 完成付款確認。
+    <br><br>
+    ※ 銀行帳號目前尚未放入展示版，正式上線前再由團購窗口提供。
   </div>
-  <a class="btn btn-dark" style="margin-top:20px" href="corporate.html">回企業採購</a>
+
+  <div class="actionbar" style="justify-content:center">
+    <button class="btn btn-dark" id="backToEdit" type="button">回去追加數量</button>
+    <a class="btn btn-light" href="corporate.html">回企業採購</a>
+  </div>
 </div>
 
 </div></section>
 </main>
 
-<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>頎邦科技員工預購 V1｜不顯示價格、不收運費、不走線上付款。</small></div></footer>
+<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>頎邦科技員工團購 V2｜50／75／100 盒階梯折扣｜單批最高 100 盒。</small></div></footer>
 
 <script>
+const PRICES={6:800,8:720,10:600,12:480};
+const DEMO_COMPANY={may:0,july:0}; // 正式版改由資料庫即時彙總
+let progressBatch="may";
+
 const loginBox=document.getElementById("loginBox");
 const orderBox=document.getElementById("orderBox");
 const doneBox=document.getElementById("doneBox");
+const myOrderBox=document.getElementById("myOrderBox");
 const eid=document.getElementById("employeeId");
 const ename=document.getElementById("employeeName");
 
+function money(n){return "NT$"+Math.round(n).toLocaleString("zh-TW");}
+function discountFor(boxes){
+  if(boxes>=100)return .08;
+  if(boxes>=75)return .04;
+  if(boxes>=50)return .02;
+  return 0;
+}
+function nextTier(boxes){
+  if(boxes<50)return {target:50,discount:2};
+  if(boxes<75)return {target:75,discount:4};
+  if(boxes<100)return {target:100,discount:8};
+  return null;
+}
+
 document.getElementById("enterBtn").onclick=()=>{
-  if(!eid.value.trim() || !ename.value.trim()){
-    alert("請先輸入工號與姓名。");
-    return;
-  }
+  if(!eid.value.trim()||!ename.value.trim()){alert("請先輸入工號與姓名。");return;}
   document.getElementById("welcome").innerHTML=`員工：<strong>${ename.value.trim()}</strong>　｜　工號：<strong>${eid.value.trim()}</strong>`;
   loginBox.style.display="none";
   orderBox.classList.add("show");
-  window.scrollTo({top:0,behavior:"smooth"});
+  renderProgress();
+  renderSummary();
 };
+
+document.querySelectorAll("[data-progress-batch]").forEach(btn=>{
+  btn.onclick=()=>{
+    progressBatch=btn.dataset.progressBatch;
+    document.querySelectorAll("[data-progress-batch]").forEach(b=>b.classList.toggle("active",b===btn));
+    renderProgress();
+    renderSummary();
+  };
+});
+
+document.querySelectorAll('input[name="batch"]').forEach(r=>{
+  r.onchange=()=>{
+    progressBatch=r.value;
+    document.querySelectorAll("[data-progress-batch]").forEach(b=>b.classList.toggle("active",b.dataset.progressBatch===progressBatch));
+    renderProgress();renderSummary();
+  };
+});
 
 document.querySelectorAll(".product").forEach(card=>{
   const qty=card.querySelector("[data-qty]");
-  card.querySelector("[data-minus]").onclick=()=>{qty.value=Math.max(0,Number(qty.value||0)-1);renderSummary();};
-  card.querySelector("[data-plus]").onclick=()=>{qty.value=Math.min(99,Number(qty.value||0)+1);renderSummary();};
-  qty.onchange=()=>{qty.value=Math.min(99,Math.max(0,Number(qty.value||0)));renderSummary();};
+  card.querySelector("[data-minus]").onclick=()=>{qty.value=Math.max(0,Number(qty.value||0)-1);renderSummary();renderProgress();};
+  card.querySelector("[data-plus]").onclick=()=>{qty.value=Math.min(100,Number(qty.value||0)+1);renderSummary();renderProgress();};
+  qty.onchange=()=>{qty.value=Math.min(100,Math.max(0,Number(qty.value||0)));renderSummary();renderProgress();};
 });
 
-function getOrder(){
+function getItems(){
   const items=[];
   document.querySelectorAll(".product").forEach(card=>{
     const q=Number(card.querySelector("[data-qty]").value||0);
-    if(q>0)items.push({count:Number(card.dataset.count),qty:q});
+    if(q>0)items.push({count:Number(card.dataset.count),qty:q,price:Number(card.dataset.price)});
   });
   return items;
 }
+function myTotalBoxes(){
+  return getItems().reduce((s,x)=>s+x.qty,0);
+}
+function selectedBatch(){
+  return document.querySelector('input[name="batch"]:checked').value;
+}
+function effectiveCompanyBoxes(){
+  // Demo: database total + this employee's current draft quantity.
+  // In production the employee's saved order must be de-duplicated before aggregate.
+  return Math.min(100,DEMO_COMPANY[selectedBatch()]+myTotalBoxes());
+}
+
+function renderProgress(){
+  const boxes=effectiveCompanyBoxes();
+  document.getElementById("companyBoxes").textContent=boxes;
+  document.getElementById("progressBar").style.width=Math.min(100,boxes)+"%";
+
+  document.querySelectorAll(".milestone").forEach(m=>{
+    m.classList.toggle("reached",boxes>=Number(m.dataset.tier));
+  });
+
+  const d=discountFor(boxes);
+  const next=nextTier(boxes);
+  const msg=document.getElementById("nextMessage");
+
+  if(boxes>=100){
+    msg.innerHTML=`🎉 本批已達 <strong>100 盒</strong>，目前為最高 <strong>8% 團購優惠</strong>。本批次容量已滿。`;
+  }else if(next){
+    const diff=next.target-boxes;
+    msg.innerHTML=`目前團購累計 <strong>${boxes} 盒</strong>，目前優惠 <strong>${d*100}%</strong>。再 <strong>${diff} 盒</strong>，全團即可升級為 <strong>${next.discount}% 優惠</strong>。`;
+  }
+}
 
 function renderSummary(){
-  const items=getOrder();
+  const items=getItems();
   const box=document.getElementById("summaryLines");
   box.innerHTML="";
-  let total=0;
+  let base=0,boxes=0;
+
   items.forEach(it=>{
-    total+=it.qty;
-    box.innerHTML+=`<div class="sumrow"><span>${it.count} 粒裝</span><strong>${it.qty} 盒</strong></div>`;
+    const line=it.qty*it.price;base+=line;boxes+=it.qty;
+    box.innerHTML+=`<div class="sumrow"><span>${it.count} 粒裝 × ${it.qty}</span><strong>${money(line)}</strong></div>`;
   });
   if(!items.length)box.innerHTML='<div style="color:var(--muted);padding:8px 0">尚未選擇商品</div>';
-  document.getElementById("totalBoxes").textContent=total+" 盒";
+
+  const companyBoxes=effectiveCompanyBoxes();
+  const d=discountFor(companyBoxes);
+  const ref=base*(1-d);
+
+  document.getElementById("myBoxes").textContent=boxes+" 盒";
+  document.getElementById("baseTotal").textContent=money(base);
+  document.getElementById("referenceTotal").textContent=money(ref);
+  document.getElementById("discountText").textContent=
+    d>0
+    ?`目前團購進度已達 ${Math.round(d*100)}% 優惠。此為參考試算；活動截止日若全團達更高門檻，會依最終級距重新結算。`
+    :"目前尚未達折扣門檻。此為參考試算；活動截止日才鎖定最終應付金額。";
+
+  document.querySelectorAll(".product").forEach(card=>{
+    const p=Number(card.dataset.price);
+    const ref=p*(1-d);
+    card.querySelector("[data-ref-price]").textContent=
+      d>0
+      ?`目前團購參考價：${money(ref)}／盒（${Math.round(d*100)}% 優惠）；最終以截止日為準。`
+      :"目前參考：原價；最終以活動截止日全團總盒數為準。";
+  });
 }
-renderSummary();
 
 document.getElementById("submitOrder").onclick=()=>{
-  const items=getOrder();
+  const items=getItems();
   if(!items.length){alert("請至少選擇一種商品。");return;}
-  const batch=document.querySelector('input[name="batch"]:checked').value;
-  const total=items.reduce((a,b)=>a+b.qty,0);
+  if(effectiveCompanyBoxes()>100){alert("本配送批次最多 100 盒，請調整數量。");return;}
+
+  const batch=selectedBatch();
+  const batchName=batch==="may"?"5 月中旬":"7 月";
+  const boxes=myTotalBoxes();
+  const base=getItems().reduce((s,x)=>s+x.qty*x.price,0);
+  const d=discountFor(effectiveCompanyBoxes());
+
+  document.getElementById("myOrderDetail").innerHTML=
+    `<div class="sumrow"><span>配送批次</span><strong>${batchName}</strong></div>
+     <div class="sumrow"><span>目前登記</span><strong>${boxes} 盒</strong></div>
+     <div class="sumrow"><span>原價小計</span><strong>${money(base)}</strong></div>
+     <div class="sumrow"><span>目前參考折扣</span><strong>${Math.round(d*100)}%</strong></div>
+     <div class="sumrow"><span>付款狀態</span><strong>活動截止後再通知</strong></div>`;
+
+  myOrderBox.classList.add("show");
 
   orderBox.classList.remove("show");
   doneBox.classList.add("show");
   document.getElementById("doneText").innerHTML=
-    `<strong>${ename.value.trim()}</strong>（工號 ${eid.value.trim()}）共預購 <strong>${total} 盒</strong>，配送批次：<strong>${batch}</strong>。`;
+    `<strong>${ename.value.trim()}</strong>（工號 ${eid.value.trim()}）目前登記 <strong>${boxes} 盒</strong>，配送批次：<strong>${batchName}</strong>。`;
   window.scrollTo({top:0,behavior:"smooth"});
 };
+
+function reopen(){
+  doneBox.classList.remove("show");
+  orderBox.classList.add("show");
+  myOrderBox.classList.add("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.getElementById("backToEdit").onclick=reopen;
+document.getElementById("editOrder").onclick=reopen;
+
+renderSummary();
 </script>
 </body></html>
