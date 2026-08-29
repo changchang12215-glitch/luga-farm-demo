@@ -69,6 +69,17 @@ url("assets/product-peach.webp") center/cover no-repeat;display:grid;place-items
 .qtybox button{border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--forest);font-size:19px}
 .qtybox input{width:100%;padding:10px;text-align:center;border:1px solid var(--line);border-radius:10px}
 .add{width:100%;margin-top:9px}
+.incart-label{
+  display:none;margin-top:10px;padding:9px 11px;border-radius:10px;
+  background:#eef4ef;color:var(--forest);font-size:12px;font-weight:900;text-align:center
+}
+.product.incart .incart-label{display:block}
+.product.incart .add{background:#e6eee7;color:var(--forest);pointer-events:none}
+.remove-mini{
+  display:none;width:100%;margin-top:7px;border:0;background:transparent;
+  color:var(--danger);font-weight:850;font-size:12px
+}
+.product.incart .remove-mini{display:block}
 .bottomcart{position:fixed;z-index:80;left:0;right:0;bottom:0;background:rgba(255,253,248,.97);
 border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(25,42,31,.11);backdrop-filter:blur(12px)}
 .bottom-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
@@ -104,7 +115,7 @@ border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(25,42,31,.11);backd
 
 <section class="products"><div class="container">
 <div class="notice" style="margin-bottom:22px">
-<strong>預購提醒：</strong>加入購物車只是選購，<strong>不代表數量已保留</strong>。正式版會在進入付款程序時，再由伺服器確認剩餘數量並建立短時間 RESERVED。
+<strong>預購提醒：</strong>加入購物車只是選購，<strong>不代表數量已保留</strong>。第一次加入後，卡片上的＋／－會直接修改購物車中的實際盒數；重複點擊也不會再把數量一直累加。正式版會在進入付款程序時，再由伺服器確認剩餘數量並建立短時間 RESERVED。
 </div>
 <div class="grid" id="grid"></div>
 </div></section>
@@ -121,7 +132,7 @@ border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(25,42,31,.11);backd
   </div>
 </div>
 
-<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>選購商品 V2｜預購數量與售價目前皆為暫定。</small></div></footer>
+<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>選購商品 V2.1｜商品卡與購物車數量即時同步｜預購數量與售價皆暫定。</small></div></footer>
 
 <script>
 const CART_KEY = "loga_cart_v2";
@@ -158,7 +169,11 @@ const products=[
 ];
 const grid=document.getElementById("grid");
 products.forEach(p=>{
-  const el=document.createElement("article");el.className="card product";
+  const el=document.createElement("article");
+  el.className="card product";
+
+  const existing=Number(loadCart()[p.count]||0);
+
   el.innerHTML=`
     <div class="pic">🍑</div>
     <div>
@@ -170,24 +185,93 @@ products.forEach(p=>{
         <div class="stat"><small>已預購</small><strong>0 盒*</strong></div>
         <div class="stat"><small>剩餘</small><strong>${p.limit} 盒*</strong></div>
       </div>
+
+      <div class="incart-label">購物車內：<span data-incart>${existing}</span> 盒</div>
+
       <div class="qtybox">
-        <button type="button" data-minus>−</button>
-        <input data-qty value="1" inputmode="numeric" aria-label="${p.count}粒裝數量">
-        <button type="button" data-plus>＋</button>
+        <button type="button" data-minus aria-label="減少">−</button>
+        <input data-qty value="${existing || 1}" inputmode="numeric" aria-label="${p.count}粒裝數量">
+        <button type="button" data-plus aria-label="增加">＋</button>
       </div>
-      <button class="btn btn-peach add" type="button" data-add>加入購物車</button>
-      <div style="font-size:10px;color:var(--muted);margin-top:6px">＊V2 展示值，正式版接後台即時更新。</div>
+
+      <button class="btn btn-peach add" type="button" data-add>
+        ${existing ? "✓ 已加入購物車" : "加入購物車"}
+      </button>
+      <button class="remove-mini" type="button" data-remove>移除此規格</button>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px">＊V2.1 展示值，正式版接後台即時更新。</div>
     </div>`;
+
   const qty=el.querySelector("[data-qty]");
-  el.querySelector("[data-minus]").onclick=()=>qty.value=Math.max(1,Number(qty.value||1)-1);
-  el.querySelector("[data-plus]").onclick=()=>qty.value=Math.min(p.limit,Number(qty.value||1)+1);
-  qty.onchange=()=>qty.value=Math.min(p.limit,Math.max(1,Number(qty.value||1)));
-  el.querySelector("[data-add]").onclick=()=>{
-    const cart=loadCart();const current=Number(cart[p.count]||0);const add=Number(qty.value||1);
-    cart[p.count]=Math.min(p.limit,current+add);saveCart(cart);
-    el.querySelector("[data-add]").textContent="✓ 已加入購物車";
-    setTimeout(()=>el.querySelector("[data-add]").textContent="加入購物車",900);
+  const addBtn=el.querySelector("[data-add]");
+  const inCartEl=el.querySelector("[data-incart]");
+
+  function refreshCard(){
+    const cart=loadCart();
+    const q=Number(cart[p.count]||0);
+    el.classList.toggle("incart",q>0);
+
+    if(q>0){
+      qty.value=q;
+      inCartEl.textContent=q;
+      addBtn.textContent="✓ 已加入購物車";
+    }else{
+      qty.value=1;
+      inCartEl.textContent=0;
+      addBtn.textContent="加入購物車";
+    }
+    updateCartBadge();
+  }
+
+  function setCartQuantity(value){
+    const cart=loadCart();
+    value=Math.min(p.limit,Math.max(0,Number(value||0)));
+
+    if(value<=0) delete cart[p.count];
+    else cart[p.count]=value;
+
+    saveCart(cart);
+    refreshCard();
+  }
+
+  el.querySelector("[data-minus]").onclick=()=>{
+    const current=Number(qty.value||1);
+
+    if(el.classList.contains("incart")){
+      setCartQuantity(current-1);
+    }else{
+      qty.value=Math.max(1,current-1);
+    }
   };
+
+  el.querySelector("[data-plus]").onclick=()=>{
+    const current=Number(qty.value||1);
+
+    if(el.classList.contains("incart")){
+      setCartQuantity(current+1);
+    }else{
+      qty.value=Math.min(p.limit,current+1);
+    }
+  };
+
+  qty.onchange=()=>{
+    let value=Math.min(p.limit,Math.max(1,Number(qty.value||1)));
+    qty.value=value;
+
+    if(el.classList.contains("incart")){
+      setCartQuantity(value);
+    }
+  };
+
+  // First add SETS the desired quantity. It never accumulates repeated clicks.
+  addBtn.onclick=()=>{
+    setCartQuantity(qty.value);
+  };
+
+  el.querySelector("[data-remove]").onclick=()=>{
+    setCartQuantity(0);
+  };
+
+  refreshCard();
   grid.appendChild(el);
 });
 </script>
