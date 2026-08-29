@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>頎邦科技員工預購｜嘍嘎果園</title>
+<style>
+:root{
+  --forest:#284333;--forest2:#456651;--ink:#25312a;--muted:#6d776f;
+  --paper:#fffdf8;--cream:#f4efe5;--cream2:#faf7f0;--peach:#d89472;
+  --peach2:#b96f54;--line:rgba(40,67,51,.14);--shadow:0 18px 50px rgba(33,48,38,.10)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+.topbar{position:sticky;top:0;z-index:60;background:rgba(255,253,248,.97);
+border-bottom:1px solid var(--line);backdrop-filter:blur(12px);box-shadow:0 5px 20px rgba(30,45,35,.06)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--forest)}
+.mark{width:45px;height:45px;border-radius:14px;background:var(--forest);color:#fff;display:grid;place-items:center;
+font-family:"Noto Serif TC","PMingLiU",serif;font-size:26px;font-weight:900}
+.brand b{font-size:19px;font-family:"Noto Serif TC","PMingLiU",serif;letter-spacing:.05em}
+.navlinks{display:flex;gap:6px;overflow:auto}
+.navlinks a{white-space:nowrap;padding:10px 12px;border-radius:10px;font-weight:850;font-size:14px;color:#35503e}
+.navlinks a:hover{background:#edf2ed}
+.pagehead{padding:58px 0 32px}
+.eyebrow{font-size:12px;letter-spacing:.17em;font-weight:900;color:var(--forest2)}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.1;letter-spacing:-.04em;color:var(--forest);margin:9px 0 14px}
+.lead{color:var(--muted);line-height:1.9;max-width:850px}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 35px rgba(33,48,38,.07)}
+.btn{border:0;border-radius:13px;min-height:48px;padding:0 20px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-dark{background:var(--forest);color:#fff}
+.btn-light{background:#fff;color:var(--forest);border:1px solid var(--line)}
+.notice{border-radius:17px;background:#f7f2ea;border:1px solid var(--line);padding:16px 18px;color:#5d675f;line-height:1.75;font-size:14px}
+.notice strong{color:var(--forest)}
+footer{margin-top:70px;background:#1c2b21;color:#fff;padding:36px 0}
+footer small{color:rgba(255,255,255,.6);line-height:1.8}
+@media(max-width:760px){
+ .nav{display:block;padding:9px 0}.brand{margin-bottom:7px}.navlinks{padding-bottom:3px}
+ .pagehead{padding-top:38px}
+}
+
+.shell{padding:10px 0 90px}
+.login{max-width:620px;margin:auto;padding:28px}
+.login h2{margin:0 0 8px;color:var(--forest)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.field{display:grid;gap:7px} .field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:900;color:var(--forest)}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.login .btn{width:100%;margin-top:18px}
+
+.order{display:none;margin-top:26px}
+.order.show{display:block}
+.welcome{padding:18px 20px;margin-bottom:18px;background:#eef4ef;border:1px solid #dbe8dd;border-radius:18px;color:var(--forest)}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.product{padding:22px}
+.product h3{font-size:24px;color:var(--forest);margin:0 0 4px}
+.product .tag{color:#795d4c;font-weight:850;margin-bottom:14px}
+.qty{display:grid;grid-template-columns:44px 1fr 44px;gap:8px;margin-top:15px}
+.qty button{border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--forest);font-size:20px}
+.qty input{width:100%;padding:11px;text-align:center;border:1px solid var(--line);border-radius:11px}
+.delivery{margin-top:20px;padding:24px}
+.delivery h2{color:var(--forest);margin-top:0}
+.batchgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.batch{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:15px;padding:15px;background:var(--cream2)}
+.batch strong{display:block;color:var(--forest);margin-bottom:3px}
+.batch small{color:var(--muted);line-height:1.55}
+.summary{margin-top:20px;padding:24px}
+.sumrow{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line)}
+.sumrow:last-child{border-bottom:0}
+.summary .btn{width:100%;margin-top:18px}
+.free{margin-top:15px;padding:14px;border-radius:13px;background:#eef4ef;color:#526a59;font-size:13px;line-height:1.7}
+.done{display:none;max-width:700px;margin:26px auto 0;padding:30px;text-align:center}
+.done.show{display:block}
+.done h2{color:var(--forest);font-size:30px}
+.done .icon{font-size:50px;margin-bottom:10px}
+@media(max-width:760px){
+ .formgrid,.products,.batchgrid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+}
+</style></head>
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="index.html"><span class="mark">嘍</span><b>嘍嘎果園</b></a>
+<nav class="navlinks"><a href="corporate.html">企業採購</a><a href="index.html">首頁</a></nav>
+</div></header>
+
+<main>
+<section class="pagehead"><div class="container">
+<div class="eyebrow">CHIPBOND EMPLOYEE PRE-ORDER</div>
+<h1>頎邦科技員工預購</h1>
+<p class="lead">2027 第一版僅作員工專屬團購。這裡不計個別宅配費，也不在線上收款；只記錄訂購規格、盒數與指定公司配送批次。</p>
+</div></section>
+
+<section class="shell"><div class="container">
+
+<div class="card login" id="loginBox">
+  <h2>員工資料</h2>
+  <p style="color:var(--muted);line-height:1.7;margin:0">請先輸入工號與姓名，再進入員工專屬選購頁。</p>
+  <div class="formgrid">
+    <div class="field"><label>工號 *</label><input id="employeeId" autocomplete="off" placeholder="請輸入工號"></div>
+    <div class="field"><label>姓名 *</label><input id="employeeName" autocomplete="name" placeholder="請輸入姓名"></div>
+  </div>
+  <button class="btn btn-dark" id="enterBtn" type="button">進入員工預購</button>
+</div>
+
+<div class="order" id="orderBox">
+  <div class="welcome" id="welcome"></div>
+
+  <div class="notice" style="margin-bottom:18px">
+    <strong>團體訂購規則：</strong>此入口不顯示價格、不計個別運費，也不需線上付款。請只確認想訂購的規格、盒數與公司配送批次。
+  </div>
+
+  <div class="products">
+    <article class="card product" data-count="6">
+      <h3>6 粒裝</h3><div class="tag">豪華送禮版</div>
+      <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
+    </article>
+    <article class="card product" data-count="8">
+      <h3>8 粒裝</h3><div class="tag">送禮自用兩相宜</div>
+      <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
+    </article>
+    <article class="card product" data-count="10">
+      <h3>10 粒裝</h3><div class="tag">人氣首選</div>
+      <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
+    </article>
+    <article class="card product" data-count="12">
+      <h3>12 粒裝</h3><div class="tag">經濟實惠</div>
+      <div class="qty"><button type="button" data-minus>−</button><input value="0" inputmode="numeric" data-qty><button type="button" data-plus>＋</button></div>
+    </article>
+  </div>
+
+  <div class="card delivery">
+    <h2>選擇公司配送批次</h2>
+    <div class="batchgrid">
+      <label class="batch">
+        <input type="radio" name="batch" value="五月中旬" checked>
+        <span><strong>第一批｜5 月中旬</strong><small>實際日期與公司領取地點後續公告。</small></span>
+      </label>
+      <label class="batch">
+        <input type="radio" name="batch" value="七月">
+        <span><strong>第二批｜7 月</strong><small>實際日期與公司領取地點後續公告。</small></span>
+      </label>
+    </div>
+    <div class="free">
+      🚗 <strong>團體統一配送｜個別運費 NT$0</strong><br>
+      本批次由團購窗口統一帶至公司，不走每一位員工的個別黑貓宅配。
+    </div>
+  </div>
+
+  <div class="card summary">
+    <h2 style="margin-top:0;color:var(--forest)">訂購摘要</h2>
+    <div id="summaryLines"></div>
+    <div class="sumrow"><span>總盒數</span><strong id="totalBoxes">0 盒</strong></div>
+    <button class="btn btn-dark" id="submitOrder" type="button">完成員工預購</button>
+  </div>
+</div>
+
+<div class="card done" id="doneBox">
+  <div class="icon">✓</div>
+  <h2>預購資料已完成（展示版）</h2>
+  <p id="doneText" style="color:var(--muted);line-height:1.8"></p>
+  <div class="notice">
+    此 V1 目前只在瀏覽器展示流程，尚未真的送進後台。正式版會把工號、姓名、規格、盒數與配送批次存入團體訂單。
+  </div>
+  <a class="btn btn-dark" style="margin-top:20px" href="corporate.html">回企業採購</a>
+</div>
+
+</div></section>
+</main>
+
+<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>頎邦科技員工預購 V1｜不顯示價格、不收運費、不走線上付款。</small></div></footer>
+
+<script>
+const loginBox=document.getElementById("loginBox");
+const orderBox=document.getElementById("orderBox");
+const doneBox=document.getElementById("doneBox");
+const eid=document.getElementById("employeeId");
+const ename=document.getElementById("employeeName");
+
+document.getElementById("enterBtn").onclick=()=>{
+  if(!eid.value.trim() || !ename.value.trim()){
+    alert("請先輸入工號與姓名。");
+    return;
+  }
+  document.getElementById("welcome").innerHTML=`員工：<strong>${ename.value.trim()}</strong>　｜　工號：<strong>${eid.value.trim()}</strong>`;
+  loginBox.style.display="none";
+  orderBox.classList.add("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+
+document.querySelectorAll(".product").forEach(card=>{
+  const qty=card.querySelector("[data-qty]");
+  card.querySelector("[data-minus]").onclick=()=>{qty.value=Math.max(0,Number(qty.value||0)-1);renderSummary();};
+  card.querySelector("[data-plus]").onclick=()=>{qty.value=Math.min(99,Number(qty.value||0)+1);renderSummary();};
+  qty.onchange=()=>{qty.value=Math.min(99,Math.max(0,Number(qty.value||0)));renderSummary();};
+});
+
+function getOrder(){
+  const items=[];
+  document.querySelectorAll(".product").forEach(card=>{
+    const q=Number(card.querySelector("[data-qty]").value||0);
+    if(q>0)items.push({count:Number(card.dataset.count),qty:q});
+  });
+  return items;
+}
+
+function renderSummary(){
+  const items=getOrder();
+  const box=document.getElementById("summaryLines");
+  box.innerHTML="";
+  let total=0;
+  items.forEach(it=>{
+    total+=it.qty;
+    box.innerHTML+=`<div class="sumrow"><span>${it.count} 粒裝</span><strong>${it.qty} 盒</strong></div>`;
+  });
+  if(!items.length)box.innerHTML='<div style="color:var(--muted);padding:8px 0">尚未選擇商品</div>';
+  document.getElementById("totalBoxes").textContent=total+" 盒";
+}
+renderSummary();
+
+document.getElementById("submitOrder").onclick=()=>{
+  const items=getOrder();
+  if(!items.length){alert("請至少選擇一種商品。");return;}
+  const batch=document.querySelector('input[name="batch"]:checked').value;
+  const total=items.reduce((a,b)=>a+b.qty,0);
+
+  orderBox.classList.remove("show");
+  doneBox.classList.add("show");
+  document.getElementById("doneText").innerHTML=
+    `<strong>${ename.value.trim()}</strong>（工號 ${eid.value.trim()}）共預購 <strong>${total} 盒</strong>，配送批次：<strong>${batch}</strong>。`;
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+</script>
+</body></html>
