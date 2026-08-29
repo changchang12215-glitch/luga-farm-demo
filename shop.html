@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="嘍嘎果園｜拉拉山水蜜桃商品介紹。8粒、10粒、12粒裝規格與鮮採水蜜桃保存方式。" />
+  <meta name="theme-color" content="#31483a" />
+  <title>當季水蜜桃｜嘍嘎果園</title>
+  <style>
+    :root{
+      --forest:#31483a;
+      --forest2:#496651;
+      --ink:#28322b;
+      --muted:#6f776f;
+      --paper:#fffdf8;
+      --cream:#f5efe5;
+      --cream2:#fbf7f0;
+      --peach:#d99a79;
+      --peach-deep:#bd755d;
+      --peach-soft:#f2d9ca;
+      --line:rgba(40,50,43,.13);
+      --shadow:0 22px 65px rgba(39,54,44,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--paper);color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+      text-rendering:optimizeLegibility;
+    }
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}
+    .eyebrow{
+      font-size:12px;letter-spacing:.18em;font-weight:850;color:var(--forest2);
+      text-transform:uppercase;
+    }
+    .section-title{
+      margin:10px 0 14px;color:var(--forest);
+      font-size:clamp(31px,4.2vw,52px);line-height:1.12;letter-spacing:-.035em;
+    }
+    .lead{color:var(--muted);line-height:1.9;font-size:16px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:48px;padding:0 22px;border-radius:999px;font-weight:800;
+      border:1px solid var(--line);
+    }
+    .btn-dark{background:var(--forest);color:white;border-color:var(--forest)}
+    .btn-light{background:#fff;color:var(--forest)}
+
+    /* nav */
+    .nav{
+      position:absolute;z-index:20;left:0;right:0;top:0;color:white;height:74px;
+    }
+    .nav-inner{height:100%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.06em}
+    .brand-mark{
+      width:40px;height:40px;border:1px solid rgba(255,255,255,.66);
+      border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.10);backdrop-filter:blur(8px);
+    }
+    .nav-links{display:flex;gap:24px;font-size:14px;color:rgba(255,255,255,.9)}
+
+    /* hero */
+    .hero{
+      min-height:590px;color:#fff;display:flex;align-items:flex-end;position:relative;overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(18,29,21,.83) 0%,rgba(18,29,21,.49) 48%,rgba(18,29,21,.20) 100%),
+        linear-gradient(0deg,rgba(18,29,21,.55),transparent 55%),
+        url("assets/product-peach.webp") center/cover no-repeat;
+    }
+    .hero:after{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 78% 36%,rgba(255,225,193,.12),transparent 28%);
+      pointer-events:none;
+    }
+    .hero-copy{position:relative;z-index:2;max-width:760px;padding:0 0 66px}
+    .hero .eyebrow{color:rgba(255,255,255,.8)}
+    .hero h1{
+      font-size:clamp(44px,6vw,76px);line-height:1.04;letter-spacing:-.045em;
+      margin:10px 0 20px;
+    }
+    .hero p{
+      max-width:660px;margin:0 0 28px;color:rgba(255,255,255,.88);
+      font-size:18px;line-height:1.85;
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* important standard */
+    .standard-wrap{position:relative;z-index:5;margin-top:-34px}
+    .standard{
+      background:#fff;border:1px solid var(--line);border-radius:28px;
+      box-shadow:var(--shadow);padding:32px;display:grid;
+      grid-template-columns:auto 1fr;gap:22px;align-items:center;
+    }
+    .scale-icon{
+      width:70px;height:70px;border-radius:22px;background:var(--cream);
+      display:grid;place-items:center;font-size:34px;
+    }
+    .standard h2{margin:0 0 8px;color:var(--forest);font-size:25px}
+    .standard p{margin:0;color:var(--muted);line-height:1.85}
+    .standard strong{color:var(--peach-deep)}
+
+    /* products */
+    .products{padding:94px 0 86px}
+    .section-head{max-width:790px;margin-bottom:38px}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .product-card{
+      background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;
+      box-shadow:0 16px 42px rgba(39,54,44,.08);
+      display:flex;flex-direction:column;
+    }
+    .product-visual{
+      min-height:255px;position:relative;display:grid;place-items:center;overflow:hidden;
+      background:
+        linear-gradient(rgba(255,250,245,.86),rgba(255,250,245,.86)),
+        url("assets/product-peach.webp") center/cover no-repeat;
+    }
+    .fruit-tray{
+      width:82%;min-height:180px;background:#fff;border-radius:24px;
+      box-shadow:0 16px 40px rgba(73,54,42,.12);
+      padding:18px;display:grid;gap:9px;
+      border:1px solid rgba(129,107,86,.10);
+    }
+    .fruit-tray.eight{grid-template-columns:repeat(4,1fr)}
+    .fruit-tray.ten{grid-template-columns:repeat(5,1fr)}
+    .fruit-tray.twelve{grid-template-columns:repeat(4,1fr)}
+    .peach-dot{
+      aspect-ratio:1;border-radius:50%;
+      background:
+        radial-gradient(circle at 34% 28%,#ffe6c8 0 8%,transparent 9%),
+        radial-gradient(circle at 42% 36%,#f5b49c 0 25%,#e88c73 58%,#c87060 100%);
+      box-shadow:inset -8px -8px 15px rgba(111,55,44,.12),0 7px 13px rgba(93,60,46,.10);
+    }
+    .count-badge{
+      position:absolute;top:18px;left:18px;background:var(--forest);color:#fff;
+      padding:7px 12px;border-radius:999px;font-size:12px;font-weight:850;
+    }
+    .visual-note{
+      position:absolute;right:15px;bottom:12px;font-size:10px;color:var(--muted);
+      background:rgba(255,255,255,.88);padding:5px 8px;border-radius:999px;
+    }
+    .product-body{padding:27px;display:flex;flex-direction:column;flex:1}
+    .product-kicker{font-size:12px;color:var(--peach-deep);font-weight:850;letter-spacing:.08em}
+    .product-card h3{font-size:28px;color:var(--forest);margin:8px 0 4px}
+    .tagline{font-weight:800;margin-bottom:18px;color:#725847}
+    .price-row{display:flex;align-items:end;gap:8px;margin-bottom:18px}
+    .price{font-size:36px;font-weight:900;color:var(--peach-deep);letter-spacing:-.04em}
+    .temporary{font-size:12px;color:var(--muted);padding-bottom:5px}
+    .product-body p{color:var(--muted);line-height:1.8;margin:0 0 18px}
+    .spec-list{list-style:none;padding:0;margin:0 0 22px;border-top:1px solid var(--line)}
+    .spec-list li{
+      display:flex;justify-content:space-between;gap:12px;padding:11px 0;
+      border-bottom:1px solid var(--line);font-size:14px;
+    }
+    .spec-list span:first-child{color:var(--muted)}
+    .spec-list strong{color:var(--forest);text-align:right}
+    .pending{
+      color:#9b6b4f!important;background:#fff3ea;border-radius:999px;
+      padding:2px 8px;font-size:12px;
+    }
+    .fake-button{
+      margin-top:auto;width:100%;min-height:48px;border-radius:14px;
+      border:1px dashed rgba(49,72,58,.32);background:#f7faf7;
+      display:grid;place-items:center;color:var(--forest2);font-weight:800;font-size:13px;
+    }
+
+
+    /* preorder */
+    .preorder-box{
+      margin:2px 0 22px;border-radius:18px;background:#f7f3eb;
+      border:1px solid rgba(49,72,58,.10);padding:16px;
+    }
+    .preorder-title{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      margin-bottom:11px;font-size:13px;font-weight:850;color:var(--forest);
+    }
+    .preorder-live{
+      display:inline-flex;align-items:center;gap:6px;color:var(--peach-deep);
+      font-size:11px;font-weight:850;
+    }
+    .preorder-live:before{
+      content:"";width:7px;height:7px;border-radius:50%;background:var(--peach);
+      box-shadow:0 0 0 4px rgba(217,154,121,.13);
+    }
+    .preorder-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:13px;
+    }
+    .preorder-stat{
+      background:#fff;border-radius:13px;padding:10px 8px;text-align:center;
+      border:1px solid rgba(49,72,58,.08);
+    }
+    .preorder-stat small{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}
+    .preorder-stat strong{display:block;color:var(--forest);font-size:16px}
+    .preorder-stat.remaining strong{color:var(--peach-deep)}
+    .preorder-bar{
+      height:8px;border-radius:999px;background:#e7e1d8;overflow:hidden;
+    }
+    .preorder-bar span{
+      display:block;height:100%;width:0%;
+      background:linear-gradient(90deg,var(--forest2),var(--peach));
+      border-radius:inherit;
+    }
+    .preorder-note{
+      margin-top:9px!important;font-size:11px!important;line-height:1.55!important;
+      color:var(--muted)!important;
+    }
+
+    /* explain */
+    .grading{padding:90px 0;background:var(--cream)}
+    .grading-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+    .grading-panel{
+      background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px;
+      box-shadow:0 14px 38px rgba(39,54,44,.07)
+    }
+    .grading-panel h3{margin:0 0 18px;color:var(--forest);font-size:26px}
+    .grading-panel p{color:var(--muted);line-height:1.9;margin:0 0 16px}
+    .grading-steps{display:grid;gap:12px;margin-top:20px}
+    .grade-step{
+      border-radius:18px;background:var(--cream2);padding:16px 18px;
+      display:flex;gap:14px;align-items:flex-start;
+    }
+    .grade-num{
+      flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+      background:var(--forest);color:#fff;display:grid;place-items:center;
+      font-weight:900;font-size:13px;
+    }
+    .grade-step strong{display:block;color:var(--forest);margin-bottom:4px}
+    .grade-step span{font-size:14px;color:var(--muted);line-height:1.65}
+
+    /* care */
+    .care{padding:94px 0}
+    .care-head{max-width:770px;margin-bottom:38px}
+    .care-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .care-card{
+      border:1px solid var(--line);border-radius:24px;padding:24px 19px;background:#fff;
+      min-height:240px;
+    }
+    .care-icon{
+      width:50px;height:50px;border-radius:17px;background:var(--cream);
+      display:grid;place-items:center;font-size:25px;margin-bottom:20px;
+    }
+    .care-card h3{font-size:18px;color:var(--forest);margin:0 0 10px}
+    .care-card p{font-size:14px;color:var(--muted);line-height:1.75;margin:0}
+    .care-flow{
+      margin-top:34px;border-radius:26px;padding:28px;background:var(--forest);color:#fff;
+      display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:center;
+    }
+    .flow-step{text-align:center}
+    .flow-step small{display:block;color:#cbd7ce;margin-bottom:5px;letter-spacing:.08em}
+    .flow-step strong{font-size:20px}
+    .arrow{font-size:24px;color:#a9b9ad}
+
+
+    /* preorder guide */
+    .preorder-guide{padding:92px 0;background:#fff}
+    .guide-grid{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:start;
+      margin-top:34px;
+    }
+    .guide-intro{
+      position:sticky;top:22px;border-radius:28px;background:var(--forest);color:#fff;
+      padding:30px;
+    }
+    .guide-intro .eyebrow{color:#c9d8cc}
+    .guide-intro h3{
+      font-size:30px;line-height:1.25;margin:10px 0 15px;
+    }
+    .guide-intro p{margin:0;color:rgba(255,255,255,.74);line-height:1.85}
+    .guide-quote{
+      margin-top:22px;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.18);
+      font-size:18px;line-height:1.75;font-weight:800;
+    }
+    .guide-list{display:grid;gap:14px}
+    .guide-item{
+      border:1px solid var(--line);border-radius:22px;padding:20px 22px;
+      background:var(--cream2);display:grid;grid-template-columns:44px 1fr;gap:14px;
+    }
+    .guide-icon{
+      width:44px;height:44px;border-radius:15px;background:#fff;
+      display:grid;place-items:center;font-size:22px;
+    }
+    .guide-item h4{margin:1px 0 6px;color:var(--forest);font-size:18px}
+    .guide-item p{margin:0;color:var(--muted);line-height:1.75;font-size:14px}
+
+    /* shipping flow */
+    .shipping{padding:94px 0;background:var(--cream)}
+    .shipping-flow{
+      display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:35px;
+    }
+    .ship-step{
+      position:relative;border-radius:22px;background:#fff;border:1px solid var(--line);
+      padding:22px 15px;text-align:center;min-height:180px;
+    }
+    .ship-step .num{
+      width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+      margin:0 auto 13px;background:var(--forest);color:#fff;font-weight:900;font-size:12px;
+    }
+    .ship-step h4{margin:0 0 8px;color:var(--forest);font-size:16px}
+    .ship-step p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+    .shipping-note{
+      margin-top:25px;border-radius:22px;padding:22px 24px;background:#fff;
+      border-left:4px solid var(--peach);
+    }
+    .shipping-note strong{color:var(--forest)}
+    .shipping-note p{margin:5px 0 0;color:var(--muted);line-height:1.75}
+
+    /* aftercare */
+    .aftercare{padding:94px 0;background:var(--paper)}
+    .aftercare-top{
+      display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:stretch;margin-top:32px;
+    }
+    .deadline-card{
+      border-radius:28px;background:linear-gradient(145deg,#fff2e8,#fff);
+      border:1px solid rgba(189,117,93,.20);padding:30px;
+    }
+    .deadline-number{
+      font-size:64px;font-weight:950;line-height:1;color:var(--peach-deep);
+      letter-spacing:-.06em;
+    }
+    .deadline-card h3{margin:7px 0 12px;color:var(--forest);font-size:26px}
+    .deadline-card p{margin:0;color:var(--muted);line-height:1.85}
+    .deadline-card strong{color:var(--peach-deep)}
+    .contact-card{
+      border-radius:28px;background:var(--forest);color:#fff;padding:30px;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .contact-card h3{font-size:26px;margin:0 0 10px}
+    .contact-card p{margin:0 0 20px;color:rgba(255,255,255,.73);line-height:1.8}
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .contact-actions a{
+      min-height:46px;padding:0 18px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;font-weight:850;
+      background:#fff;color:var(--forest);
+    }
+    .contact-actions a.secondary{
+      background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.38);
+    }
+
+    /* report form */
+    .report-wrap{
+      margin-top:30px;border:1px solid var(--line);border-radius:28px;
+      background:#fff;overflow:hidden;box-shadow:0 16px 42px rgba(39,54,44,.07);
+    }
+    .report-head{padding:26px 28px;background:#f6f1e9;border-bottom:1px solid var(--line)}
+    .report-head h3{margin:0 0 7px;color:var(--forest);font-size:24px}
+    .report-head p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+    .report-form{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:13px;font-weight:850;color:var(--forest)}
+    .field input,.field select,.field textarea{
+      width:100%;border:1px solid rgba(40,50,43,.18);border-radius:14px;
+      padding:12px 13px;font:inherit;background:#fff;color:var(--ink);outline:none;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:var(--forest2);box-shadow:0 0 0 3px rgba(73,102,81,.09);
+    }
+    .field textarea{min-height:120px;resize:vertical}
+    .file-box{
+      border:1px dashed rgba(49,72,58,.35);border-radius:16px;padding:17px;background:#fafcf9;
+      color:var(--muted);font-size:13px;line-height:1.65;
+    }
+    .report-submit{
+      grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:18px;
+      border-top:1px solid var(--line);padding-top:18px;
+    }
+    .report-submit small{color:var(--muted);line-height:1.6}
+    .report-submit button{
+      border:0;border-radius:999px;background:var(--forest);color:#fff;
+      min-height:48px;padding:0 22px;font-weight:850;cursor:pointer;
+    }
+    .demo-message{
+      display:none;grid-column:1/-1;border-radius:16px;background:#eef4ef;color:var(--forest);
+      padding:14px 16px;font-size:14px;line-height:1.7;
+    }
+
+    /* cases */
+    .cases{padding:90px 0;background:var(--cream2)}
+    .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+    .case-card{
+      border-radius:22px;background:#fff;border:1px solid var(--line);padding:23px;
+    }
+    .case-tag{
+      display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--cream);
+      color:var(--forest2);font-size:11px;font-weight:850;margin-bottom:10px;
+    }
+    .case-card h3{font-size:19px;color:var(--forest);margin:0 0 8px}
+    .case-card p{font-size:14px;color:var(--muted);line-height:1.75;margin:0}
+    .case-result{
+      margin-top:13px;padding-top:12px;border-top:1px solid var(--line);
+      color:#725847!important;font-weight:750;
+    }
+
+    @media(max-width:980px){
+      .shipping-flow{grid-template-columns:repeat(3,1fr)}
+      .aftercare-top{grid-template-columns:1fr}
+    }
+    @media(max-width:720px){
+      .preorder-guide,.shipping,.aftercare,.cases{padding:68px 0}
+      .guide-grid{grid-template-columns:1fr}
+      .guide-intro{position:static}
+      .shipping-flow{grid-template-columns:1fr}
+      .report-form{grid-template-columns:1fr}
+      .field.full,.report-submit{grid-column:auto}
+      .report-submit{display:grid}
+      .report-submit button{width:100%}
+      .case-grid{grid-template-columns:1fr}
+      .contact-actions{display:grid}
+      .contact-actions a{width:100%}
+    }
+
+    /* notice */
+    .notice{padding:82px 0;background:var(--cream2)}
+    .notice-box{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px
+    }
+    .notice-card{
+      border:1px solid var(--line);border-radius:24px;background:#fff;padding:27px;
+    }
+    .notice-card h3{margin:0 0 12px;color:var(--forest);font-size:21px}
+    .notice-card p,.notice-card li{color:var(--muted);line-height:1.8;font-size:14px}
+    .notice-card ul{margin:0;padding-left:20px}
+    .important{border-left:4px solid var(--peach)}
+
+    /* footer */
+    footer{background:#1e2a22;color:#fff;padding:44px 0}
+    .footer-inner{display:flex;align-items:end;justify-content:space-between;gap:24px}
+    footer small{display:block;color:rgba(255,255,255,.58);line-height:1.8;margin-top:10px}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap;color:rgba(255,255,255,.7);font-size:13px}
+
+    @media(max-width:1100px){
+      .product-grid{grid-template-columns:1fr 1fr}
+      .product-card:last-child{grid-column:auto}
+      .grading-grid{grid-template-columns:1fr}
+      .care-grid{grid-template-columns:repeat(2,1fr)}
+      .care-card:last-child{grid-column:1/-1}
+    }
+    @media(max-width:720px){
+      .container{width:min(100% - 30px,1180px)}
+      .nav{height:64px}.nav-links{display:none}
+      .hero{min-height:560px;background-position:56% center}
+      .hero-copy{padding-bottom:48px}
+      .hero h1{font-size:43px}
+      .hero p{font-size:16px}
+      .hero-actions{display:grid}
+      .btn{width:100%}
+      .standard{grid-template-columns:1fr;padding:24px}
+      .standard-wrap{margin-top:-22px}
+      .scale-icon{width:58px;height:58px}
+      .products,.grading,.care,.notice{padding:68px 0}
+      .product-grid{grid-template-columns:1fr}
+      .product-card:last-child{grid-column:auto}
+      .product-visual{min-height:235px}
+      .care-grid{grid-template-columns:1fr}
+      .care-card:last-child{grid-column:auto}
+      .care-flow{grid-template-columns:1fr}
+      .arrow{transform:rotate(90deg);text-align:center}
+      .notice-box{grid-template-columns:1fr}
+      .footer-inner{display:block}.footer-links{margin-top:22px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">嘍</span>
+          <span>嘍嘎果園 · 拉拉山</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">回首頁</a>
+          <a href="#specs">商品規格</a>
+          <a href="#grading">分級方式</a>
+          <a href="#preorder-guide">預購須知</a>
+          <a href="#aftercare">異常回報</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="hero-copy">
+        <div class="eyebrow">LOGA FARM · LALA MOUNTAIN</div>
+        <h1>當季水蜜桃</h1>
+        <p>採預購制，依當季產量分配各規格可售數量。6 粒、8 粒、10 粒、12 粒不是單純看「大顆、小顆」來分，而是依照各規格的重量標準進行分級。</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#specs">看看三種規格</a>
+          <a class="btn btn-light" href="#care">收到後怎麼保存？</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="standard-wrap">
+    <div class="container">
+      <div class="standard">
+        <div class="scale-icon">⚖️</div>
+        <div>
+          <h2>先說清楚一件事：規格是看重量，不是只看外觀大小。</h2>
+          <p>
+            水蜜桃是自然生長的果實，每顆果型、色澤與重量都會有差異。
+            <strong>8 粒、10 粒、12 粒皆有各自的重量分級規範</strong>，
+            並非以目測「這顆看起來比較大」就決定規格。同一盒中的果實也不會像工業製品一樣完全相同。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="products" id="specs">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">PEACH SELECTION</div>
+          <h2 class="section-title">四種規格，選一盒適合自己的桃子。</h2>
+          <p class="lead">
+            下面價格目前為網站規劃暫定價；正式售價與重量級距待當季規格與果園確認後公告；目前預購上限為網站規劃暫定值。
+            正式預購時，每一種規格都會顯示預購上限、已預購數與剩餘數量。
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="count-badge">6 粒裝</span>
+              <div class="fruit-tray six" aria-label="6粒裝排列示意" style="grid-template-columns:repeat(3,1fr);">
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+              </div>
+              <span class="visual-note">排列示意，不代表果實大小</span>
+            </div>
+            <div class="product-body">
+              <div class="product-kicker">6-COUNT BOX</div>
+              <h3>6 粒裝</h3>
+              <div class="tagline">豪華送禮版</div>
+              <div class="price-row">
+                <div class="price">NT$800</div>
+                <div class="temporary">暫定</div>
+              </div>
+              <p>主打送禮質感與稀少性，預計數量極少，作為較高規格的豪華送禮版。正式出貨仍依 6 粒裝重量規格分級。</p>
+
+              <div class="preorder-box">
+                <div class="preorder-title">
+                  <span>本季預購進度</span>
+                  <span class="preorder-live">預購制</span>
+                </div>
+                <div class="preorder-stats">
+                  <div class="preorder-stat">
+                    <small>預購上限</small>
+                    <strong>50 盒</strong>
+                  </div>
+                  <div class="preorder-stat">
+                    <small>已預購</small>
+                    <strong>0 盒</strong>
+                  </div>
+                  <div class="preorder-stat remaining">
+                    <small>剩餘數量</small>
+                    <strong>50 盒</strong>
+                  </div>
+                </div>
+                <div class="preorder-bar" aria-label="預購進度"><span style="width:0%"></span></div>
+                <p class="preorder-note">預購上限為目前規劃暫定值；豪華送禮版數量極少，正式上線後將依實際訂單與保留庫存即時更新。</p>
+              </div>
+
+              <ul class="spec-list">
+                <li><span>裝盒數量</span><strong>6 粒</strong></li>
+                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
+                <li><span>分級依據</span><strong>果實重量</strong></li>
+                <li><span>建議情境</span><strong>豪華送禮</strong></li>
+              </ul>
+              <div class="fake-button">購物車功能下一階段接入</div>
+            </div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="count-badge">8 粒裝</span>
+              <div class="fruit-tray eight" aria-label="8粒裝排列示意">
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+              </div>
+              <span class="visual-note">排列示意，不代表果實大小</span>
+            </div>
+            <div class="product-body">
+              <div class="product-kicker">8-COUNT BOX</div>
+              <h3>8 粒裝</h3>
+              <div class="tagline">送禮自用兩相宜</div>
+              <div class="price-row">
+                <div class="price">NT$720</div>
+                <div class="temporary">暫定</div>
+              </div>
+              <p>盒裝視覺大方，適合送禮，也適合想好好享用當季水蜜桃的客人。正式出貨仍依 8 粒裝重量規格分級。</p>
+
+              <div class="preorder-box">
+                <div class="preorder-title">
+                  <span>本季預購進度</span>
+                  <span class="preorder-live">預購制</span>
+                </div>
+                <div class="preorder-stats">
+                  <div class="preorder-stat">
+                    <small>預購上限</small>
+                    <strong>200 盒</strong>
+                  </div>
+                  <div class="preorder-stat">
+                    <small>已預購</small>
+                    <strong>0 盒</strong>
+                  </div>
+                  <div class="preorder-stat remaining">
+                    <small>剩餘數量</small>
+                    <strong>200 盒</strong>
+                  </div>
+                </div>
+                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
+                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+              </div>
+
+              <ul class="spec-list">
+                <li><span>裝盒數量</span><strong>8 粒</strong></li>
+                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
+                <li><span>分級依據</span><strong>果實重量</strong></li>
+                <li><span>建議情境</span><strong>送禮／自用</strong></li>
+              </ul>
+              <div class="fake-button">購物車功能下一階段接入</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="count-badge">10 粒裝</span>
+              <div class="fruit-tray ten" aria-label="10粒裝排列示意">
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+              </div>
+              <span class="visual-note">排列示意，不代表果實大小</span>
+            </div>
+            <div class="product-body">
+              <div class="product-kicker">10-COUNT BOX</div>
+              <h3>10 粒裝</h3>
+              <div class="tagline">人氣首選</div>
+              <div class="price-row">
+                <div class="price">NT$600</div>
+                <div class="temporary">暫定</div>
+              </div>
+              <p>份量、價格與分享人數之間取得平衡，是第一年預計主推的規格。送禮、自用或與家人分享都很合適。</p>
+
+              <div class="preorder-box">
+                <div class="preorder-title">
+                  <span>本季預購進度</span>
+                  <span class="preorder-live">預購制</span>
+                </div>
+                <div class="preorder-stats">
+                  <div class="preorder-stat">
+                    <small>預購上限</small>
+                    <strong>300 盒</strong>
+                  </div>
+                  <div class="preorder-stat">
+                    <small>已預購</small>
+                    <strong>0 盒</strong>
+                  </div>
+                  <div class="preorder-stat remaining">
+                    <small>剩餘數量</small>
+                    <strong>300 盒</strong>
+                  </div>
+                </div>
+                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
+                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+              </div>
+
+              <ul class="spec-list">
+                <li><span>裝盒數量</span><strong>10 粒</strong></li>
+                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
+                <li><span>分級依據</span><strong>果實重量</strong></li>
+                <li><span>建議情境</span><strong>主力／分享</strong></li>
+              </ul>
+              <div class="fake-button">購物車功能下一階段接入</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="count-badge">12 粒裝</span>
+              <div class="fruit-tray twelve" aria-label="12粒裝排列示意">
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+                <i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i><i class="peach-dot"></i>
+              </div>
+              <span class="visual-note">排列示意，不代表果實大小</span>
+            </div>
+            <div class="product-body">
+              <div class="product-kicker">12-COUNT BOX</div>
+              <h3>12 粒裝</h3>
+              <div class="tagline">經濟實惠</div>
+              <div class="price-row">
+                <div class="price">NT$480</div>
+                <div class="temporary">暫定</div>
+              </div>
+              <p>適合家庭分享與日常享用，以較輕鬆的價格品嚐當季鮮採水蜜桃。正式出貨同樣依 12 粒裝重量規格分級。</p>
+
+              <div class="preorder-box">
+                <div class="preorder-title">
+                  <span>本季預購進度</span>
+                  <span class="preorder-live">預購制</span>
+                </div>
+                <div class="preorder-stats">
+                  <div class="preorder-stat">
+                    <small>預購上限</small>
+                    <strong>500 盒</strong>
+                  </div>
+                  <div class="preorder-stat">
+                    <small>已預購</small>
+                    <strong>0 盒</strong>
+                  </div>
+                  <div class="preorder-stat remaining">
+                    <small>剩餘數量</small>
+                    <strong>500 盒</strong>
+                  </div>
+                </div>
+                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
+                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+              </div>
+
+              <ul class="spec-list">
+                <li><span>裝盒數量</span><strong>12 粒</strong></li>
+                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
+                <li><span>分級依據</span><strong>果實重量</strong></li>
+                <li><span>建議情境</span><strong>家庭／自用</strong></li>
+              </ul>
+              <div class="fake-button">購物車功能下一階段接入</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="grading" id="grading">
+      <div class="container grading-grid">
+        <div>
+          <div class="eyebrow">HOW WE GRADE</div>
+          <h2 class="section-title">天然水果，本來就不會每顆一模一樣。</h2>
+          <p class="lead">
+            我們希望照片好看，也希望規格講得誠實。商品照片讓您直觀看見一盒桃子的感覺；
+            真正的出貨標準，仍以當季水果的重量分級規範為準。
+          </p>
+        </div>
+
+        <div class="grading-panel">
+          <h3>水蜜桃分級方式</h3>
+          <p>同一規格的果實可能在果型、色澤、外觀尺寸上略有不同，這是天然水果正常的差異。</p>
+
+          <div class="grading-steps">
+            <div class="grade-step">
+              <div class="grade-num">1</div>
+              <div><strong>採收後檢視果況</strong><span>依成熟度與外觀狀況進行基本篩選。</span></div>
+            </div>
+            <div class="grade-step">
+              <div class="grade-num">2</div>
+              <div><strong>依重量規格分級</strong><span>6／8／10／12 粒各自依正式重量級距分類，不以目測大小決定。</span></div>
+            </div>
+            <div class="grade-step">
+              <div class="grade-num">3</div>
+              <div><strong>依規格裝盒出貨</strong><span>確認果況、數量與包裝後，再安排配送。</span></div>
+            </div>
+          </div>
+
+          <p style="margin-top:20px;font-size:13px;">
+            ※ 6／8／10／12 粒正式重量級距目前尚未填入，待果園確認後於正式版公告。
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="preorder-guide" id="preorder-guide">
+      <div class="container">
+        <div class="eyebrow">PRE-ORDER GUIDE</div>
+        <h2 class="section-title">預購不是立刻出貨，成熟了，我們才採。</h2>
+        <p class="lead">
+          水蜜桃採預購制，付款完成代表訂單成立與數量保留；實際採收與出貨，仍會依果實成熟度、
+          當季天候與果園作業安排分批進行。
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-intro">
+            <div class="eyebrow">OUR PRINCIPLE</div>
+            <h3>不為了趕日期，提早把桃子摘下來。</h3>
+            <p>我們希望客人收到的是當季真正適合採收的果實，而不是為了湊固定日期，犧牲成熟度。</p>
+            <div class="guide-quote">
+              水蜜桃不是倉庫裡等著出貨的商品。<br>
+              成熟了，我們才採。
+            </div>
+          </div>
+
+          <div class="guide-list">
+            <div class="guide-item">
+              <div class="guide-icon">🧾</div>
+              <div>
+                <h4>預購成立</h4>
+                <p>付款完成後，系統會保留您所預購的規格與數量；各規格售完即停止預購或依果園公告處理候補。</p>
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-icon">🌤️</div>
+              <div>
+                <h4>出貨會受成熟度與天候影響</h4>
+                <p>豪雨、颱風、氣溫與果實成熟速度，都可能影響採收安排。若預估出貨區間需要調整，我們會主動通知。</p>
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-icon">📞</div>
+              <div>
+                <h4>出貨前會再人工聯絡確認</h4>
+                <p>安排出貨前，我們會以電話為主要聯絡方式，確認訂購數量、收件資訊與配送需求。LINE／Email 為通知用途，不取代人工確認。</p>
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-icon">🏠</div>
+              <div>
+                <h4>請安排可儘快取件的收貨地點</h4>
+                <p>水蜜桃為生鮮水果，不適合長時間放置於管理室、警衛室、公司櫃台或高溫環境，請於物流送達後儘速取件。</p>
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-icon">🚚</div>
+              <div>
+                <h4>出貨後提供物流資訊</h4>
+                <p>商品交寄後，網站與通知訊息將提供出貨狀態及物流查詢資訊，方便掌握配送進度。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shipping" id="shipping">
+      <div class="container">
+        <div class="eyebrow">SHIPPING FLOW</div>
+        <h2 class="section-title">從預購到送達，我們會這樣走。</h2>
+
+        <div class="shipping-flow">
+          <div class="ship-step">
+            <div class="num">01</div>
+            <h4>完成預購</h4>
+            <p>付款完成，系統保留規格與數量。</p>
+          </div>
+          <div class="ship-step">
+            <div class="num">02</div>
+            <h4>等待成熟</h4>
+            <p>依果況與天候安排採收，不搶摘。</p>
+          </div>
+          <div class="ship-step">
+            <div class="num">03</div>
+            <h4>人工確認</h4>
+            <p>出貨前電話確認收件資料與需求。</p>
+          </div>
+          <div class="ship-step">
+            <div class="num">04</div>
+            <h4>採收裝盒</h4>
+            <p>依重量分級、檢視果況後裝盒。</p>
+          </div>
+          <div class="ship-step">
+            <div class="num">05</div>
+            <h4>出貨通知</h4>
+            <p>LINE／Email 發送物流與出貨資訊。</p>
+          </div>
+          <div class="ship-step">
+            <div class="num">06</div>
+            <h4>安心送達</h4>
+            <p>到貨後請儘速取件、開箱確認。</p>
+          </div>
+        </div>
+
+        <div class="shipping-note">
+          <strong>關於指定到貨日：</strong>
+          <p>因水蜜桃成熟度與天候無法像一般庫存商品精準控制，正式版將以「預估出貨區間」為主；若有送禮或特殊日期需求，可於訂單備註，我們會盡量協助，但仍以實際果況為優先。</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="care" id="care">
+      <div class="container">
+        <div class="care-head">
+          <div class="eyebrow">AFTER ARRIVAL</div>
+          <h2 class="section-title">收到水蜜桃後，請這樣照顧它。</h2>
+          <p class="lead">
+            水蜜桃為鮮採水果，每顆成熟速度不完全相同。收到後先看看顏色與軟硬度，
+            不要所有桃子一到家就立刻全部塞進冰箱。
+          </p>
+        </div>
+
+        <div class="care-grid">
+          <article class="care-card">
+            <div class="care-icon">🏠</div>
+            <h3>較綠、較硬</h3>
+            <p>先放在陰涼、通風處熟成，避免陽光直曬與高溫環境，暫時不用放冰箱。</p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">🍑</div>
+            <h3>等待轉熟</h3>
+            <p>待果色逐漸轉紅、香氣變明顯，觸感較剛收到時柔軟，即進入適合食用的成熟階段。</p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">❄️</div>
+            <h3>成熟後冷藏</h3>
+            <p>成熟後再放入冰箱冷藏，有助延緩後續熟成。水蜜桃仍建議趁新鮮儘早享用。</p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">🤲</div>
+            <h3>輕拿輕放</h3>
+            <p>果肉細緻，請避免碰撞、擠壓與重疊重壓；若同盒成熟度不同，可優先食用較熟的果實。</p>
+          </article>
+
+          <article class="care-card">
+            <div class="care-icon">📞</div>
+            <h3>異常請聯絡</h3>
+            <p>若收到後發現明顯碰傷、漏液、發霉或其他重大異常，請先拍照並與我們聯絡，我們會協助處理。</p>
+          </article>
+        </div>
+
+        <div class="care-flow">
+          <div class="flow-step"><small>STEP 01</small><strong>收到後先看果況</strong></div>
+          <div class="arrow">→</div>
+          <div class="flow-step"><small>STEP 02</small><strong>較生就常溫熟成</strong></div>
+          <div class="arrow">→</div>
+          <div class="flow-step"><small>STEP 03</small><strong>成熟後再冷藏</strong></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="aftercare" id="aftercare">
+      <div class="container">
+        <div class="eyebrow">QUALITY REPORT</div>
+        <h2 class="section-title">到貨有異常，請在 48 小時內告訴我們。</h2>
+        <p class="lead">
+          為了讓品質責任能夠清楚判定，異常回報期限以物流系統顯示「送達／簽收」時間起算。
+          若由管理室、警衛室、公司櫃台或他人代收，也以物流顯示送達時間為準。
+        </p>
+
+        <div class="aftercare-top">
+          <div class="deadline-card">
+            <div class="deadline-number">48h</div>
+            <h3>物流顯示送達後 48 小時內</h3>
+            <p>
+              請於到貨後儘速開箱確認。若發現明顯碰撞、漏液、發霉、果蠅／蟲害或其他品質異常，
+              請在 <strong>48 小時內</strong>透過 LINE 官方帳號或官網異常回報功能聯絡我們。
+              逾期因保存環境、溫度或延遲取件造成的品質變化，較難判定責任歸屬。
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>兩種回報方式，選一個方便的就好。</h3>
+            <p>不強迫客人一定填網站表單。習慣 LINE 的客人直接聯絡我們；需要留下完整資料，也可以使用官網異常回報。</p>
+            <div class="contact-actions">
+              <a href="#report-form">官網異常回報</a>
+              <a class="secondary" href="#line-placeholder">LINE 聯絡我們</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="report-wrap" id="report-form">
+          <div class="report-head">
+            <h3>商品異常回報</h3>
+            <p>此為前端表單雛形；後續會接上訂單資料庫與後台案件管理。送出後預計產生售後案件編號，方便後續人工聯絡。</p>
+          </div>
+
+          <form class="report-form" id="qualityReport">
+            <div class="field">
+              <label for="orderId">訂單編號</label>
+              <input id="orderId" name="orderId" placeholder="例如：LG-2027-00182">
+            </div>
+
+            <div class="field">
+              <label for="customerPhone">訂購人電話</label>
+              <input id="customerPhone" name="customerPhone" inputmode="tel" placeholder="例如：0912-345-678">
+            </div>
+
+            <div class="field">
+              <label for="issueType">異常類型</label>
+              <select id="issueType" name="issueType">
+                <option value="">請選擇</option>
+                <option>碰撞／壓傷</option>
+                <option>漏液</option>
+                <option>發霉</option>
+                <option>果蠅／蟲害</option>
+                <option>嚴重過熟／腐敗</option>
+                <option>其他</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="affectedQty">受影響數量</label>
+              <input id="affectedQty" name="affectedQty" placeholder="例如：10粒裝，2顆">
+            </div>
+
+            <div class="field full">
+              <label for="photos">上傳照片</label>
+              <div class="file-box">
+                建議提供：① 整盒照片　② 異常果實近照　③ 如外箱有明顯撞擊，可補充外箱照片。<br>
+                <input id="photos" name="photos" type="file" accept="image/*" multiple style="margin-top:10px;">
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="description">狀況說明</label>
+              <textarea id="description" name="description" placeholder="請簡單描述收到商品時的狀況，例如：開箱後發現右上角兩顆有漏液。"></textarea>
+            </div>
+
+            <div class="demo-message" id="demoMessage">
+              ✅ 這是 V1.3 前端展示版，資料目前不會真的送出。後續接上後端後，會建立售後案件並通知我們人工聯絡。
+            </div>
+
+            <div class="report-submit">
+              <small>
+                送出異常回報不代表自動核定退款或補寄；我們會查看照片與訂單狀況後，再由人工聯絡確認處理方式。
+              </small>
+              <button type="submit">送出異常回報</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="container">
+        <div class="eyebrow">COMMON CASES</div>
+        <h2 class="section-title">常見案例，先把容易誤會的說清楚。</h2>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="case-tag">案例 01｜正常回報</span>
+            <h3>物流下午送達，晚上開箱發現一顆明顯碰傷</h3>
+            <p>仍在物流送達後 48 小時內，請拍下整盒與受損果實照片，透過 LINE 或官網回報。</p>
+            <p class="case-result">→ 由果園依實際受損狀況確認後協助處理。</p>
+          </article>
+
+          <article class="case-card">
+            <span class="case-tag">案例 02｜延遲取件</span>
+            <h3>物流已送到管理室，但兩天後才去取件</h3>
+            <p>異常回報仍以物流顯示送達時間起算；管理室、警衛室、公司櫃台或他人代收皆視為已送達。</p>
+            <p class="case-result">→ 若因延遲取件造成過熟或品質變化，原則上不列入正常品質異常範圍。</p>
+          </article>
+
+          <article class="case-card">
+            <span class="case-tag">案例 03｜重大品質異常</span>
+            <h3>開箱即發現發霉、嚴重漏液或整體腐敗</h3>
+            <p>請儘速拍照並在 48 小時內聯絡我們，這類狀況會列為重大品質異常案件優先處理。</p>
+            <p class="case-result">→ 退款／補寄等正式處理方式，依果園確認與最終售後政策辦理。</p>
+          </article>
+
+          <article class="case-card">
+            <span class="case-tag">案例 04｜不是異常</span>
+            <h3>同一盒桃子看起來大小、形狀不完全一樣</h3>
+            <p>天然水果本來就不會完全一致；6／8／10／12 粒依重量級距分級，而不是要求每顆外觀尺寸完全相同。</p>
+            <p class="case-result">→ 只要符合該規格重量標準與出貨品質，即屬正常天然差異。</p>
+          </article>
+
+          <article class="case-card">
+            <span class="case-tag">案例 05｜需要熟成</span>
+            <h3>收到時桃子較綠、較硬</h3>
+            <p>這不一定是品質異常。鮮採水蜜桃成熟速度不同，可先置於陰涼通風處，待轉紅、香氣增加後再冷藏。</p>
+            <p class="case-result">→ 先依保存說明熟成，不要一收到就全部冰進冰箱。</p>
+          </article>
+
+          <article class="case-card">
+            <span class="case-tag">案例 06｜人工聯絡</span>
+            <h3>客人不確定自己的狀況算不算異常</h3>
+            <p>不用先自己判定，也不用擔心填錯類型。先拍照、聯絡我們，我們會人工查看並與您確認。</p>
+            <p class="case-result">→ 系統負責留下紀錄，真正的處理仍由人工聯絡。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="notice">
+      <div class="container">
+        <div class="eyebrow">PLEASE NOTE</div>
+        <h2 class="section-title" style="font-size:clamp(30px,3.6vw,44px)">購買前，再提醒您幾件事。</h2>
+
+        <div class="notice-box">
+          <div class="notice-card">
+            <h3>天然農產品說明</h3>
+            <ul>
+              <li>商品照片為實際裝盒與視覺參考，實際果型、色澤可能因當季生長略有差異。</li>
+              <li>6／8／10／12 粒規格依重量標準分級，不代表每顆桃子的外觀尺寸完全一致。</li>
+              <li>產量與成熟速度受天候影響，實際出貨日期將依果園採收狀況安排。</li>
+              <li>本商品採預購制；目前規劃暫定配額為 6 粒 50 盒、8 粒 200 盒、10 粒 300 盒、12 粒 500 盒，售完後即停止該規格預購或依果園公告處理候補。</li>
+            </ul>
+          </div>
+
+          <div class="notice-card important" id="line-placeholder">
+            <h3>價格與售後</h3>
+            <ul>
+              <li>本頁 NT$720／600／480 目前皆為暫定售價，正式開放預購前會再次確認。</li>
+              <li>異常回報期限以物流顯示送達／簽收時間起算 48 小時；管理室、警衛室、公司櫃台或他人代收亦同。</li>
+              <li>若到貨有明顯碰撞或單顆異常，請在期限內拍照回報，由果園依實際狀況協助處理。</li>
+              <li>發霉、嚴重漏液、整體腐敗、果蠅／蟲害等重大品質問題，將列為優先案件；退款／補寄等正式政策仍待果園最終定案。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="brand">
+          <span class="brand-mark">嘍</span>
+          <span>嘍嘎果園 · 拉拉山</span>
+        </div>
+        <small>
+          桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>
+          商品介紹頁 V1.3｜預購・出貨・售後版｜價格、重量規格與部分售後政策尚待正式確認
+        </small>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">回首頁</a>
+        <a href="#specs">商品規格</a>
+        <a href="#grading">分級方式</a>
+        <a href="#preorder-guide">預購須知</a>
+        <a href="#aftercare">異常回報</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("qualityReport")?.addEventListener("submit", function(e){
+      e.preventDefault();
+      const msg = document.getElementById("demoMessage");
+      if(msg){
+        msg.style.display = "block";
+        msg.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+    });
+  </script>
+</body>
+</html>
