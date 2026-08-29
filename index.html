@@ -226,28 +226,74 @@
 
     /* ---------- story ---------- */
     .story{padding:100px 0}
-    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-    .story-photo{
-      position:relative;min-height:560px;border-radius:30px;overflow:hidden;box-shadow:var(--shadow)
+    .story-layout{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      grid-template-areas:
+        "heading heading"
+        "photo content";
+      column-gap:56px;
+      row-gap:28px;
+      align-items:end;
     }
-    .story-photo img{position:absolute;inset:0;height:100%;object-fit:cover}
+    .story-heading{
+      grid-area:heading;
+      max-width:980px;
+      padding-left:36%;
+    }
+    .story-heading .section-title{
+      max-width:820px;
+      margin-bottom:0;
+    }
+    .story-photo{
+      grid-area:photo;
+      position:relative;
+      height:500px;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      align-self:end;
+    }
+    .story-photo img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
     .story-badge{
       position:absolute;left:20px;right:20px;bottom:20px;
       background:rgba(255,255,255,.91);backdrop-filter:blur(10px);
       border-radius:17px;padding:14px 16px;color:var(--forest);
       font-size:13px;font-weight:900;
     }
-    .story-copy p{color:var(--muted);line-height:1.95;margin:0 0 16px}
+    .story-copy{
+      grid-area:content;
+      min-width:0;
+    }
+    .story-copy p{
+      color:var(--muted);
+      line-height:2;
+      margin:0 0 16px;
+    }
+    .story-copy p strong{
+      color:var(--forest);
+    }
     .story-quote{
-      margin:24px 0;padding:18px 0 18px 20px;border-left:3px solid var(--peach);
-      color:#735a4b;font-size:18px;line-height:1.8;
+      margin:23px 0 0;
+      padding:17px 0 17px 20px;
+      border-left:3px solid var(--peach);
+      color:#735a4b;
+      font-size:18px;
+      line-height:1.8;
     }
     .story-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:25px}
 
 
     /* ---------- embedded story video ---------- */
     .story-video-wrap{
-      margin-top:28px;
+      margin-top:20px;
       border-radius:24px;
       overflow:hidden;
       border:1px solid var(--line);
@@ -483,8 +529,10 @@
       .function-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:820px){
-      .product-grid,.story-grid,.taoyou-box{grid-template-columns:1fr}
-      .story-photo{min-height:480px}
+      .product-grid,.taoyou-box{grid-template-columns:1fr}
+      .story-layout{grid-template-columns:1fr;grid-template-areas:"heading" "content" "photo";row-gap:24px}
+      .story-heading{padding-left:0;max-width:none}
+      .story-photo{height:460px}
       .contact-grid{grid-template-columns:1fr}
     }
     @media(max-width:620px){
@@ -512,7 +560,7 @@
       .section-head{display:block}
       .section-head .section-copy{margin-top:16px}
       .product-card{min-height:420px}
-      .story-photo{min-height:430px}
+      .story-photo{height:400px}
       .story-actions{display:grid}
       .taoyou-box{padding:26px}
       .footer-inner{display:block}
@@ -678,30 +726,39 @@
     </section>
 
     <section class="story" id="story">
-      <div class="container story-grid">
+      <div class="container story-layout">
+
+        <div class="story-heading">
+          <div class="eyebrow">OUR ORIGIN</div>
+          <h2 class="section-title">嘍嘎果園，不是突然出現的一個品牌。</h2>
+        </div>
+
         <div class="story-photo">
-          <img src="assets/family-harvest.webp" alt="嘍嘎果園家人與水蜜桃採收實景">
-          <div class="story-badge">果園的第一章，從媽媽開始；後來，家人一個個走回山裡。</div>
+          <img src="assets/family-harvest.webp" alt="嘍嘎果園媽媽與水蜜桃採收實景">
+          <div class="story-badge">果園的第一章，從媽媽一點一滴把山上的日子建立起來。</div>
         </div>
 
         <div class="story-copy">
-          <div class="eyebrow">OUR ORIGIN</div>
-          <h2 class="section-title">嘍嘎果園，不是突然出現的一個品牌。</h2>
           <p>
-            果園最早從媽媽開始，一季又一季把山上的生活撐起來。
-            後來弟弟回到山上，先從椴木香菇開始嘗試，也碰過失敗、離開農業工作幾年，再一步一步走回果園。
+            父親過世後，<strong>媽媽一個人上山，從零開始把果園一點一滴建立起來。</strong>
+            那不是一條輕鬆的路，山上的生活、果樹的照顧、每一季的收成，都得慢慢摸索。
+            過程裡，也有山上親友伸手幫忙，大家一起把這片果園撐了起來。
           </p>
+
           <p>
-            所以我們不想把故事寫成一條很漂亮、一路順利的返鄉路。
-            桃子、香菇、家人的手、山裡的天氣，這些才是嘍嘎果園真正的樣子。
+            有了媽媽打下來的基礎，才有後來一家人繼續走進農業的可能。
+            弟弟回到山上後，先從椴木香菇開始嘗試，碰過失敗，也曾離開農業工作幾年，
+            最後又一步一步走回果園，把水蜜桃與農業真正變成自己的路。
+          </p>
+
+          <p>
+            從媽媽開始的果園，到後來弟弟成為<strong>後山第一個「百大青農」</strong>，
+            中間不是一段被包裝好的返鄉故事，而是一家人在山上慢慢累積出來的生活。
+            桃子、香菇、家人的手、山裡的天氣，才是嘍嘎果園真正想留下來的東西。
           </p>
 
           <div class="story-quote">
             「漂亮是必要的，但真實比漂亮更重要。」
-          </div>
-
-          <div class="story-actions">
-            <a class="btn btn-outline" href="shop.html">看看當季商品</a>
           </div>
 
           <div class="story-video-wrap">
@@ -728,6 +785,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -813,7 +871,7 @@
             <span class="brand-sub" style="color:#b8cbbb">LOGA FARM · LALA MOUNTAIN</span>
           </span>
         </div>
-        <small>桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>首頁 V4.2 · 果園源起影片改為站內播放</small>
+        <small>桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>首頁 V4.3 · 果園源起重排與故事補強</small>
       </div>
 
       <div class="footer-links">
