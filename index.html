@@ -244,6 +244,150 @@
     }
     .story-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:25px}
 
+
+    /* ---------- embedded story video ---------- */
+    .story-video-wrap{
+      margin-top:28px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#18231b;
+      box-shadow:0 16px 40px rgba(30,45,35,.10);
+    }
+    .story-video-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:15px 17px;
+      background:#f7f3eb;
+      color:var(--forest);
+    }
+    .story-video-head strong{
+      font-size:15px;
+    }
+    .story-video-head span{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .story-video-frame{
+      position:relative;
+      aspect-ratio:16/9;
+      background:#111;
+    }
+    .story-video-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .story-video-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:9px;
+      padding:12px 14px;
+      background:#fff;
+    }
+    .story-video-actions button,
+    .story-video-actions a{
+      min-height:40px;
+      padding:0 14px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--forest);
+      font-weight:850;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      cursor:pointer;
+    }
+    .story-video-actions button:hover,
+    .story-video-actions a:hover{
+      background:#edf2ed;
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:200;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(8,14,10,.88);
+      backdrop-filter:blur(8px);
+    }
+    .video-modal.open{display:flex}
+    .video-modal-inner{
+      width:min(1180px,96vw);
+      position:relative;
+    }
+    .video-modal-frame{
+      position:relative;
+      aspect-ratio:16/9;
+      background:#000;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
+    }
+    .video-modal-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .video-modal-close{
+      position:absolute;
+      right:0;
+      top:-52px;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:50%;
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      font-size:25px;
+      cursor:pointer;
+    }
+    .video-modal-label{
+      color:rgba(255,255,255,.75);
+      font-size:13px;
+      margin:0 55px 12px 0;
+    }
+
+    @media(max-width:620px){
+      .story-video-head{
+        display:block;
+      }
+      .story-video-head span{
+        display:block;
+        margin-top:4px;
+      }
+      .story-video-actions{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+      .story-video-actions button,
+      .story-video-actions a{
+        width:100%;
+      }
+      .video-modal{
+        padding:12px;
+      }
+      .video-modal-inner{
+        width:100%;
+      }
+      .video-modal-close{
+        top:-48px;
+        right:2px;
+      }
+    }
+
     /* ---------- peach friends ---------- */
     .taoyou{padding:92px 0;background:#edf3ee}
     .taoyou-box{
@@ -557,8 +701,31 @@
           </div>
 
           <div class="story-actions">
-            <a class="btn btn-dark" href="https://www.youtube.com/watch?v=O5uzSZ_JhTU" target="_blank" rel="noopener">看返鄉歷程影片 ↗</a>
             <a class="btn btn-outline" href="shop.html">看看當季商品</a>
+          </div>
+
+          <div class="story-video-wrap">
+            <div class="story-video-head">
+              <strong>🎬 嘍嘎果園｜返鄉歷程</strong>
+              <span>可直接在網站內觀看</span>
+            </div>
+
+            <div class="story-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/O5uzSZ_JhTU?rel=0"
+                title="嘍嘎果園返鄉歷程"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="story-video-actions">
+              <button type="button" id="openStoryVideo">⛶ 放大觀看</button>
+              <a href="https://www.youtube.com/watch?v=O5uzSZ_JhTU" target="_blank" rel="noopener">
+                無法播放？前往 YouTube ↗
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -646,7 +813,7 @@
             <span class="brand-sub" style="color:#b8cbbb">LOGA FARM · LALA MOUNTAIN</span>
           </span>
         </div>
-        <small>桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>首頁 V4.1 · 新增企業採購入口</small>
+        <small>桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>首頁 V4.2 · 果園源起影片改為站內播放</small>
       </div>
 
       <div class="footer-links">
@@ -659,6 +826,24 @@
       </div>
     </div>
   </footer>
+
+
+  <div class="video-modal" id="storyVideoModal" aria-hidden="true">
+    <div class="video-modal-inner">
+      <div class="video-modal-label">嘍嘎果園｜返鄉歷程</div>
+      <button class="video-modal-close" id="closeStoryVideo" type="button" aria-label="關閉影片">×</button>
+
+      <div class="video-modal-frame">
+        <iframe
+          id="storyVideoLarge"
+          data-src="https://www.youtube-nocookie.com/embed/O5uzSZ_JhTU?rel=0&autoplay=1"
+          title="嘍嘎果園返鄉歷程放大播放"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
 
   <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
     <aside class="cart-drawer" aria-label="購物車">
@@ -698,8 +883,40 @@
     overlay.addEventListener("click", e => {
       if(e.target === overlay) closeCart();
     });
+
+    const storyModal = document.getElementById("storyVideoModal");
+    const storyLarge = document.getElementById("storyVideoLarge");
+    const openStoryVideo = document.getElementById("openStoryVideo");
+    const closeStoryVideo = document.getElementById("closeStoryVideo");
+
+    function openVideoModal(){
+      storyModal.classList.add("open");
+      storyModal.setAttribute("aria-hidden","false");
+      if(!storyLarge.src){
+        storyLarge.src = storyLarge.dataset.src;
+      }
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeVideoModal(){
+      storyModal.classList.remove("open");
+      storyModal.setAttribute("aria-hidden","true");
+      storyLarge.src = "";
+      document.body.style.overflow = "";
+    }
+
+    openStoryVideo?.addEventListener("click", openVideoModal);
+    closeStoryVideo?.addEventListener("click", closeVideoModal);
+    storyModal?.addEventListener("click", e => {
+      if(e.target === storyModal) closeVideoModal();
+    });
+
+
     document.addEventListener("keydown", e => {
-      if(e.key === "Escape") closeCart();
+      if(e.key === "Escape"){
+        closeCart();
+        closeVideoModal();
+      }
     });
   </script>
 </body>
