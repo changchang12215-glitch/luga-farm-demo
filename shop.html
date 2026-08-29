@@ -253,6 +253,55 @@
 
 
 
+
+    /* V1.5 商品規格卡：shop.html 只負責介紹，不顯示庫存／購物車資訊 */
+    .product-specs{
+      display:grid;
+      gap:0;
+      margin:4px 0 22px;
+      border-top:1px solid var(--line);
+    }
+    .product-spec-row{
+      display:grid;
+      grid-template-columns:112px 1fr;
+      gap:14px;
+      align-items:start;
+      padding:11px 0;
+      border-bottom:1px solid var(--line);
+      font-size:14px;
+    }
+    .product-spec-row span:first-child{
+      color:var(--muted);
+    }
+    .product-spec-row strong{
+      color:var(--forest);
+      text-align:right;
+      line-height:1.6;
+    }
+    .product-spec-row .pending-spec{
+      color:#9b6b4f;
+      font-size:12px;
+      background:#fff3ea;
+      padding:3px 8px;
+      border-radius:999px;
+      justify-self:end;
+    }
+    .product-note{
+      border-radius:14px;
+      background:var(--cream2);
+      padding:13px 14px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+      margin-top:auto;
+    }
+    .product-note strong{color:var(--forest)}
+    @media(max-width:720px){
+      .product-spec-row{
+        grid-template-columns:96px 1fr;
+      }
+    }
+
     /* purchase entry */
     .purchase-entry{
       margin:28px 0 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
@@ -593,38 +642,44 @@
                 <div class="price">NT$800</div>
                 <div class="temporary">暫定</div>
               </div>
-              <p>主打送禮質感與稀少性，預計數量極少，作為較高規格的豪華送禮版。正式出貨仍依 6 粒裝重量規格分級。</p>
 
-              <div class="preorder-box">
-                <div class="preorder-title">
-                  <span>本季預購進度</span>
-                  <span class="preorder-live">預購制</span>
+              <p>主打高規格送禮與稀少性，適合重視份量與送禮質感的客人。天然果實會有外觀差異，正式規格仍以重量分級為準。</p>
+
+              <div class="product-specs">
+                <div class="product-spec-row">
+                  <span>裝盒數量</span>
+                  <strong>6 粒／盒</strong>
                 </div>
-                <div class="preorder-stats">
-                  <div class="preorder-stat">
-                    <small>預購上限</small>
-                    <strong>50 盒</strong>
-                  </div>
-                  <div class="preorder-stat">
-                    <small>已預購</small>
-                    <strong>0 盒</strong>
-                  </div>
-                  <div class="preorder-stat remaining">
-                    <small>剩餘數量</small>
-                    <strong>50 盒</strong>
-                  </div>
+                <div class="product-spec-row">
+                  <span>每盒總重量</span>
+                  <strong class="pending-spec">待果園確認</strong>
                 </div>
-                <div class="preorder-bar" aria-label="預購進度"><span style="width:0%"></span></div>
-                <p class="preorder-note">預購上限為目前規劃暫定值；豪華送禮版數量極少，正式上線後將依實際訂單與保留庫存即時更新。</p>
+                <div class="product-spec-row">
+                  <span>單果重量級距</span>
+                  <strong class="pending-spec">待果園確認</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>甜度／口感</span>
+                  <strong>細緻多汁／甜度依當季果況</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>分級方式</span>
+                  <strong>依果實重量分級</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>產地</span>
+                  <strong>桃園復興 · 拉拉山</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>適合用途</span>
+                  <strong>豪華送禮</strong>
+                </div>
               </div>
 
-              <ul class="spec-list">
-                <li><span>裝盒數量</span><strong>6 粒</strong></li>
-                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
-                <li><span>分級依據</span><strong>果實重量</strong></li>
-                <li><span>建議情境</span><strong>豪華送禮</strong></li>
-              </ul>
-              <div class="fake-button">購物車功能下一階段接入</div>
+              <div class="product-note">
+                <strong>天然水果提醒：</strong>
+                甜度、香氣、果型與色澤會受當季氣候、成熟度與個別果實影響；正式版若標示甜度區間，將以果園實際量測與當季標準為準，不作每顆固定數值保證。
+              </div>
             </div>
           </article>
 
@@ -646,38 +701,44 @@
                 <div class="price">NT$720</div>
                 <div class="temporary">暫定</div>
               </div>
-              <p>盒裝視覺大方，適合送禮，也適合想好好享用當季水蜜桃的客人。正式出貨仍依 8 粒裝重量規格分級。</p>
 
-              <div class="preorder-box">
-                <div class="preorder-title">
-                  <span>本季預購進度</span>
-                  <span class="preorder-live">預購制</span>
+              <p>送禮與自用之間取得平衡，盒裝份量大方。適合節慶送禮、拜訪親友，也適合自己品嚐當季水蜜桃。</p>
+
+              <div class="product-specs">
+                <div class="product-spec-row">
+                  <span>裝盒數量</span>
+                  <strong>8 粒／盒</strong>
                 </div>
-                <div class="preorder-stats">
-                  <div class="preorder-stat">
-                    <small>預購上限</small>
-                    <strong>200 盒</strong>
-                  </div>
-                  <div class="preorder-stat">
-                    <small>已預購</small>
-                    <strong>0 盒</strong>
-                  </div>
-                  <div class="preorder-stat remaining">
-                    <small>剩餘數量</small>
-                    <strong>200 盒</strong>
-                  </div>
+                <div class="product-spec-row">
+                  <span>每盒總重量</span>
+                  <strong class="pending-spec">待果園確認</strong>
                 </div>
-                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
-                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+                <div class="product-spec-row">
+                  <span>單果重量級距</span>
+                  <strong class="pending-spec">待果園確認</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>甜度／口感</span>
+                  <strong>細緻多汁／甜度依當季果況</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>分級方式</span>
+                  <strong>依果實重量分級</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>產地</span>
+                  <strong>桃園復興 · 拉拉山</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>適合用途</span>
+                  <strong>送禮／自用</strong>
+                </div>
               </div>
 
-              <ul class="spec-list">
-                <li><span>裝盒數量</span><strong>8 粒</strong></li>
-                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
-                <li><span>分級依據</span><strong>果實重量</strong></li>
-                <li><span>建議情境</span><strong>送禮／自用</strong></li>
-              </ul>
-              <div class="fake-button">購物車功能下一階段接入</div>
+              <div class="product-note">
+                <strong>天然水果提醒：</strong>
+                甜度、香氣、果型與色澤會受當季氣候、成熟度與個別果實影響；正式版若標示甜度區間，將以果園實際量測與當季標準為準，不作每顆固定數值保證。
+              </div>
             </div>
           </article>
 
@@ -698,38 +759,44 @@
                 <div class="price">NT$600</div>
                 <div class="temporary">暫定</div>
               </div>
-              <p>份量、價格與分享人數之間取得平衡，是第一年預計主推的規格。送禮、自用或與家人分享都很合適。</p>
 
-              <div class="preorder-box">
-                <div class="preorder-title">
-                  <span>本季預購進度</span>
-                  <span class="preorder-live">預購制</span>
+              <p>份量與價格最均衡，是第一階段預計主推的規格。適合家庭分享、一般送禮，也最容易成為日常選購的主力。</p>
+
+              <div class="product-specs">
+                <div class="product-spec-row">
+                  <span>裝盒數量</span>
+                  <strong>10 粒／盒</strong>
                 </div>
-                <div class="preorder-stats">
-                  <div class="preorder-stat">
-                    <small>預購上限</small>
-                    <strong>300 盒</strong>
-                  </div>
-                  <div class="preorder-stat">
-                    <small>已預購</small>
-                    <strong>0 盒</strong>
-                  </div>
-                  <div class="preorder-stat remaining">
-                    <small>剩餘數量</small>
-                    <strong>300 盒</strong>
-                  </div>
+                <div class="product-spec-row">
+                  <span>每盒總重量</span>
+                  <strong class="pending-spec">待果園確認</strong>
                 </div>
-                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
-                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+                <div class="product-spec-row">
+                  <span>單果重量級距</span>
+                  <strong class="pending-spec">待果園確認</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>甜度／口感</span>
+                  <strong>細緻多汁／甜度依當季果況</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>分級方式</span>
+                  <strong>依果實重量分級</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>產地</span>
+                  <strong>桃園復興 · 拉拉山</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>適合用途</span>
+                  <strong>主力／分享</strong>
+                </div>
               </div>
 
-              <ul class="spec-list">
-                <li><span>裝盒數量</span><strong>10 粒</strong></li>
-                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
-                <li><span>分級依據</span><strong>果實重量</strong></li>
-                <li><span>建議情境</span><strong>主力／分享</strong></li>
-              </ul>
-              <div class="fake-button">購物車功能下一階段接入</div>
+              <div class="product-note">
+                <strong>天然水果提醒：</strong>
+                甜度、香氣、果型與色澤會受當季氣候、成熟度與個別果實影響；正式版若標示甜度區間，將以果園實際量測與當季標準為準，不作每顆固定數值保證。
+              </div>
             </div>
           </article>
 
@@ -751,38 +818,44 @@
                 <div class="price">NT$480</div>
                 <div class="temporary">暫定</div>
               </div>
-              <p>適合家庭分享與日常享用，以較輕鬆的價格品嚐當季鮮採水蜜桃。正式出貨同樣依 12 粒裝重量規格分級。</p>
 
-              <div class="preorder-box">
-                <div class="preorder-title">
-                  <span>本季預購進度</span>
-                  <span class="preorder-live">預購制</span>
+              <p>盒內顆數較多，適合家庭分享與日常享用。以比較輕鬆的價格，品嚐同樣依重量標準分級的當季水蜜桃。</p>
+
+              <div class="product-specs">
+                <div class="product-spec-row">
+                  <span>裝盒數量</span>
+                  <strong>12 粒／盒</strong>
                 </div>
-                <div class="preorder-stats">
-                  <div class="preorder-stat">
-                    <small>預購上限</small>
-                    <strong>500 盒</strong>
-                  </div>
-                  <div class="preorder-stat">
-                    <small>已預購</small>
-                    <strong>0 盒</strong>
-                  </div>
-                  <div class="preorder-stat remaining">
-                    <small>剩餘數量</small>
-                    <strong>500 盒</strong>
-                  </div>
+                <div class="product-spec-row">
+                  <span>每盒總重量</span>
+                  <strong class="pending-spec">待果園確認</strong>
                 </div>
-                <div class="preorder-bar" aria-label="預購進度"><span></span></div>
-                <p class="preorder-note">目前預購上限為網站規劃暫定值；正式上線後將依實際訂單與保留庫存即時更新，未付款或逾時訂單的保留數量會依系統規則釋放。</p>
+                <div class="product-spec-row">
+                  <span>單果重量級距</span>
+                  <strong class="pending-spec">待果園確認</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>甜度／口感</span>
+                  <strong>細緻多汁／甜度依當季果況</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>分級方式</span>
+                  <strong>依果實重量分級</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>產地</span>
+                  <strong>桃園復興 · 拉拉山</strong>
+                </div>
+                <div class="product-spec-row">
+                  <span>適合用途</span>
+                  <strong>家庭／自用</strong>
+                </div>
               </div>
 
-              <ul class="spec-list">
-                <li><span>裝盒數量</span><strong>12 粒</strong></li>
-                <li><span>重量級距</span><strong class="pending">待老闆確認</strong></li>
-                <li><span>分級依據</span><strong>果實重量</strong></li>
-                <li><span>建議情境</span><strong>家庭／自用</strong></li>
-              </ul>
-              <div class="fake-button">購物車功能下一階段接入</div>
+              <div class="product-note">
+                <strong>天然水果提醒：</strong>
+                甜度、香氣、果型與色澤會受當季氣候、成熟度與個別果實影響；正式版若標示甜度區間，將以果園實際量測與當季標準為準，不作每顆固定數值保證。
+              </div>
             </div>
           </article>
         </div>
@@ -793,8 +866,8 @@
     <div class="container">
       <div class="buy-band">
         <div>
-          <h3>規格看好了嗎？接著選盒數。</h3>
-          <p>選購頁只負責選規格與數量；加入購物車不代表已保留預購庫存。</p>
+          <h3>規格看好了嗎？下一頁再選盒數。</h3>
+          <p>這一頁只介紹商品；實際預購數量、剩餘盒數與加入購物車，統一放在選購頁處理。</p>
         </div>
         <a href="preorder.html">前往選購商品 →</a>
       </div>
@@ -1183,7 +1256,7 @@
         </div>
         <small>
           桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>
-          商品介紹頁 V1.4｜商品資訊主頁｜選購流程改由 preorder.html 進入
+          商品介紹頁 V1.5｜純商品規格版｜庫存、預購剩餘量與購物車移至 preorder.html
         </small>
       </div>
       <div class="footer-links">
