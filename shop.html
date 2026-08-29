@@ -252,6 +252,52 @@
     .arrow{font-size:24px;color:#a9b9ad}
 
 
+
+    /* purchase entry */
+    .purchase-entry{
+      margin:28px 0 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+    }
+    .purchase-entry .primary-buy{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      min-height:54px;padding:0 26px;border-radius:14px;background:var(--peach-deep);
+      color:#fff;font-weight:900;box-shadow:0 12px 28px rgba(189,117,93,.22);
+    }
+    .purchase-entry .secondary-buy{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      min-height:54px;padding:0 23px;border-radius:14px;background:#fff;
+      color:var(--forest);font-weight:900;border:1px solid var(--line);
+    }
+    .buy-band{
+      margin:34px 0 0;border-radius:25px;padding:25px 28px;
+      background:linear-gradient(135deg,var(--forest),#3f654e);color:#fff;
+      display:flex;align-items:center;justify-content:space-between;gap:25px;
+    }
+    .buy-band h3{margin:0 0 6px;font-size:24px}
+    .buy-band p{margin:0;color:rgba(255,255,255,.73);line-height:1.7}
+    .buy-band a{
+      flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;padding:0 22px;border-radius:13px;background:#fff;color:var(--forest);
+      font-weight:900;
+    }
+    .mobile-buybar{
+      display:none;position:fixed;z-index:90;left:10px;right:10px;bottom:10px;
+      border-radius:16px;background:rgba(255,253,248,.97);border:1px solid var(--line);
+      box-shadow:0 15px 40px rgba(22,38,28,.18);padding:9px;
+      backdrop-filter:blur(12px);
+    }
+    .mobile-buybar a{
+      min-height:50px;border-radius:12px;background:var(--forest);color:#fff;
+      display:flex;align-items:center;justify-content:center;font-weight:900;
+    }
+    @media(max-width:720px){
+      .purchase-entry{display:grid}
+      .purchase-entry .primary-buy,.purchase-entry .secondary-buy{width:100%}
+      .buy-band{display:grid;padding:22px}
+      .buy-band a{width:100%}
+      .mobile-buybar{display:block}
+      body{padding-bottom:76px}
+    }
+
     /* preorder guide */
     .preorder-guide{padding:92px 0;background:#fff}
     .guide-grid{
@@ -473,6 +519,7 @@
         <div class="nav-links">
           <a href="index.html">回首頁</a>
           <a href="#specs">商品規格</a>
+        <a href="preorder.html">選購商品</a>
           <a href="#grading">分級方式</a>
           <a href="#preorder-guide">預購須知</a>
           <a href="#aftercare">異常回報</a>
@@ -486,8 +533,8 @@
         <h1>當季水蜜桃</h1>
         <p>採預購制，依當季產量分配各規格可售數量。6 粒、8 粒、10 粒、12 粒不是單純看「大顆、小顆」來分，而是依照各規格的重量標準進行分級。</p>
         <div class="hero-actions">
-          <a class="btn btn-light" href="#specs">看看三種規格</a>
-          <a class="btn btn-light" href="#care">收到後怎麼保存？</a>
+          <a class="btn btn-light" href="preorder.html">🍑 選購商品</a>
+          <a class="btn btn-light" href="#specs">查看商品規格</a>
         </div>
       </div>
     </div>
@@ -506,6 +553,13 @@
           </p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="purchase-entry">
+      <a class="primary-buy" href="preorder.html">🍑 開始選購水蜜桃</a>
+      <a class="secondary-buy" href="#preorder-guide">先看預購與出貨規則</a>
     </div>
   </div>
 
@@ -734,6 +788,17 @@
         </div>
       </div>
     </section>
+
+
+    <div class="container">
+      <div class="buy-band">
+        <div>
+          <h3>規格看好了嗎？接著選盒數。</h3>
+          <p>選購頁只負責選規格與數量；加入購物車不代表已保留預購庫存。</p>
+        </div>
+        <a href="preorder.html">前往選購商品 →</a>
+      </div>
+    </div>
 
     <section class="grading" id="grading">
       <div class="container grading-grid">
@@ -1118,7 +1183,7 @@
         </div>
         <small>
           桃園復興 · 拉拉山｜水蜜桃 · 椴木香菇<br>
-          商品介紹頁 V1.3｜預購・出貨・售後版｜價格、重量規格與部分售後政策尚待正式確認
+          商品介紹頁 V1.4｜商品資訊主頁｜選購流程改由 preorder.html 進入
         </small>
       </div>
       <div class="footer-links">
@@ -1130,6 +1195,8 @@
       </div>
     </div>
   </footer>
+
+  <div class="mobile-buybar"><a href="preorder.html">🍑 選購商品</a></div>
 
   <script>
     document.getElementById("qualityReport")?.addEventListener("submit", function(e){

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>訂單完成｜嘍嘎果園</title>
+<style>
+:root{
+  --forest:#284333;--forest2:#456651;--ink:#25312a;--muted:#6d776f;
+  --paper:#fffdf8;--cream:#f4efe5;--cream2:#faf7f0;--peach:#d89472;
+  --peach2:#b96f54;--line:rgba(40,67,51,.14);--danger:#a54e43;
+  --shadow:0 18px 50px rgba(33,48,38,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1160px,calc(100% - 36px));margin:auto}
+.topbar{position:sticky;top:0;z-index:60;background:rgba(255,253,248,.97);
+border-bottom:1px solid var(--line);backdrop-filter:blur(12px);box-shadow:0 5px 20px rgba(30,45,35,.06)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--forest)}
+.mark{width:45px;height:45px;border-radius:14px;background:var(--forest);color:#fff;display:grid;place-items:center;
+font-family:"Noto Serif TC","PMingLiU",serif;font-size:26px;font-weight:900}
+.brand b{font-size:19px;font-family:"Noto Serif TC","PMingLiU",serif;letter-spacing:.05em}
+.navlinks{display:flex;align-items:center;gap:6px;overflow:auto}
+.navlinks a{white-space:nowrap;padding:10px 12px;border-radius:10px;font-weight:850;font-size:14px;color:#35503e}
+.navlinks a:hover{background:#edf2ed}
+.cartlink{display:inline-flex!important;align-items:center;gap:7px;border:1px solid var(--line);background:#fff}
+.badge{min-width:20px;height:20px;padding:0 5px;border-radius:999px;display:grid;place-items:center;background:var(--peach2);color:#fff;font-size:11px}
+.pagehead{padding:50px 0 28px}
+.eyebrow{font-size:12px;letter-spacing:.17em;font-weight:900;color:var(--forest2)}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.12;letter-spacing:-.04em;color:var(--forest);margin:8px 0 14px}
+.lead{color:var(--muted);line-height:1.85;max-width:820px}
+.notice{border-radius:18px;background:#f7f2ea;border:1px solid var(--line);padding:17px 19px;color:#58645c;line-height:1.75;font-size:14px}
+.notice strong{color:var(--forest)}
+.btn{border:0;border-radius:13px;min-height:48px;padding:0 20px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-dark{background:var(--forest);color:#fff}
+.btn-light{background:#fff;color:var(--forest);border:1px solid var(--line)}
+.btn-peach{background:var(--peach2);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 35px rgba(33,48,38,.07)}
+footer{margin-top:70px;background:#1c2b21;color:#fff;padding:36px 0}
+footer small{color:rgba(255,255,255,.6);line-height:1.8}
+.stepbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0 0}
+.step{padding:11px 10px;border-radius:12px;background:#efeee9;color:#7a817b;text-align:center;font-size:12px;font-weight:850}
+.step.active{background:var(--forest);color:#fff}
+.step.done{background:#dde9df;color:var(--forest)}
+@media(max-width:760px){
+ .nav{display:block;padding:9px 0}.brand{margin-bottom:7px}.navlinks{padding-bottom:3px}
+ .pagehead{padding-top:34px}.stepbar{grid-template-columns:1fr 1fr}
+}
+
+.donebox{max-width:780px;margin:0 auto 80px;padding:34px;text-align:center}
+.check{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#e7f1e9;color:var(--forest);font-size:35px;margin:0 auto 20px}
+.donebox h2{font-size:31px;color:var(--forest);margin:0 0 10px}
+.orderid{display:inline-block;padding:9px 13px;background:var(--cream);border-radius:10px;font-weight:900;color:var(--forest);margin:9px 0 22px}
+.timeline{text-align:left;display:grid;gap:10px;margin:26px 0}
+.t{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:14px;background:var(--cream2)}
+.t b{width:26px;height:26px;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center;font-size:11px;flex:0 0 auto}
+.t strong{display:block;color:var(--forest)} .t span{color:var(--muted);font-size:13px;line-height:1.6}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media(max-width:620px){.donebox{padding:24px 18px}.actions{display:grid}.actions .btn{width:100%}}
+</style></head>
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="index.html"><span class="mark">嘍</span><b>嘍嘎果園</b></a>
+<nav class="navlinks"><a href="index.html">首頁</a><a href="shop.html">商品介紹</a></nav>
+</div></header>
+
+<main><section class="pagehead"><div class="container">
+<div class="stepbar"><div class="step done">1 選購商品</div><div class="step done">2 購物車</div><div class="step done">3 填資料／付款</div><div class="step active">4 訂單完成</div></div>
+</div></section>
+
+<section><div class="container"><div class="card donebox">
+<div class="check">✓</div>
+<h2>預購流程已完成（展示版）</h2>
+<p class="lead" style="margin:auto">目前沒有真的付款、也沒有正式保留庫存。正式網站必須收到第三方金流確認後，訂單才會成為 PAID。</p>
+<div class="orderid" id="orderId">DEMO-ORDER</div>
+
+<div class="timeline">
+<div class="t"><b>1</b><div><strong>付款成功，預購正式成立</strong><span>Webhook 驗證金流成功後，才把 RESERVED 轉為 PAID／已售。</span></div></div>
+<div class="t"><b>2</b><div><strong>等待水蜜桃成熟</strong><span>預購不等於立即出貨；依成熟度、天候與訂單順序安排。</span></div></div>
+<div class="t"><b>3</b><div><strong>出貨前人工電話確認</strong><span>再次確認商品、收件人、地址與配送需求。</span></div></div>
+<div class="t"><b>4</b><div><strong>採收、裝盒、出貨</strong><span>出貨後以 LINE／Email 提供物流資訊。</span></div></div>
+<div class="t"><b>5</b><div><strong>物流送達後 48 小時異常回報</strong><span>管理室或他人代收仍以物流送達時間起算；可使用 LINE 或官網回報。</span></div></div>
+</div>
+
+<div class="notice"><strong>桃友：</strong>不用先加入才能購買。正式訂單完成後即可建立顧客紀錄，再引導連結 LINE 與後續桃友服務。</div>
+
+<div class="actions" style="margin-top:24px">
+<a class="btn btn-dark" href="index.html">回首頁</a>
+<a class="btn btn-light" href="shop.html">查看商品與須知</a>
+<a class="btn btn-light" href="shop.html#aftercare">異常回報規則</a>
+</div>
+</div></div></section></main>
+
+<footer><div class="container"><b>嘍嘎果園 · LOGA FARM</b><small><br>訂單完成 V2｜展示流程。</small></div></footer>
+
+<script>
+const CART_KEY = "loga_cart_v2";
+const LIMITS = {6:50,8:200,10:300,12:500};
+const PRICES = {6:800,8:720,10:600,12:480};
+const NAMES = {6:"豪華送禮版",8:"送禮自用兩相宜",10:"人氣首選",12:"經濟實惠"};
+
+function loadCart(){
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
+  catch(e){ return {}; }
+}
+function saveCart(cart){
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  updateCartBadge();
+}
+function cartCount(){
+  const c=loadCart(); return Object.values(c).reduce((a,b)=>a+Number(b||0),0);
+}
+function cartTotal(){
+  const c=loadCart(); return Object.entries(c).reduce((sum,[k,q])=>sum+(PRICES[k]||0)*Number(q||0),0);
+}
+function updateCartBadge(){
+  document.querySelectorAll("[data-cart-count]").forEach(el=>el.textContent=cartCount());
+  document.querySelectorAll("[data-cart-total]").forEach(el=>el.textContent=money(cartTotal()));
+}
+function money(n){ return "NT$" + Number(n).toLocaleString("zh-TW"); }
+document.addEventListener("DOMContentLoaded", updateCartBadge);
+
+const d=JSON.parse(sessionStorage.getItem("loga_demo_order_v2")||"null");
+if(d){
+ const id="DEMO-"+new Date().toISOString().slice(2,10).replaceAll("-","")+"-"+Math.floor(1000+Math.random()*9000);
+ document.getElementById("orderId").textContent=id;
+ localStorage.removeItem(CART_KEY);updateCartBadge();
+}
+</script></body></html>
